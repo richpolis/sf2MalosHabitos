@@ -1,0 +1,100 @@
+/* 
+    Document   : login
+    Created on : 19/03/2012, 07:49:15 AM
+    Author     : richpolis
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.header_login{
+    background-image: url(../images/login/top.jpg);
+    background-repeat: repeat-x;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 52px;
+    
+}
+.header_login .texto{
+    position: relative;
+    top: 5px;
+    color:white;
+    padding-left: 10px;
+    font-size: 14px;
+}
+
+.header_cms{
+    margin-top: 100px;
+    margin-bottom: 0px;
+
+}
+.login_richpolis {
+  background-image: url(../images/login/singlecontainer.jpg);
+  background-repeat: no-repeat;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:2em;
+  padding:15px;
+  width:297px;
+  height: 324px;
+  font-size: 11px;
+  /*margin-bottom: .5em;*/
+}
+.login_richpolis h1 {
+  background:transparent url(../images/login_error.png) no-repeat scroll left top;
+  color:#333333;
+  font-size:1.5em;
+  height:50px;
+  margin:0;
+  padding:15px 4px 0 55px;
+  text-align:left;
+}
+.login_richpolis p {
+  padding:0 1em;
+}
+.form-block {
+  padding:15px 0 10px 15px;
+}
+.login-form-richpolis {
+  text-align:left;
+  width:100%;
+}
+.login-text-richpolis {
+  float:left;
+  text-align:left;
+  width:40%;
+}
+
+.login_richpolis .inputlabel{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.login_richpolis .inputcheck
+{
+  margin-left: 6px;
+}
+.login_richpolis input[type="text"],.login_richpolis input[type="password"]{
+    font-size: 14px;
+    width: 87%;
+    padding: 10px;
+}   
+
+.login_richpolis .boton_login{
+    background-image: url(/images/login/botonlogin.gif);
+    background-position: left;
+    background-repeat: no-repeat;
+    height: 42px;
+    width: 121px;
+    color: transparent;
+    padding-top: 21px;
+    padding-bottom: 21px;
+    padding-left: 48px;
+    padding-right: 48px;
+}
+.login_richpolis .boton_login:hover{
+    background-position: right;
+    padding-left: 47px;
+    padding-right: 47px;
+}    

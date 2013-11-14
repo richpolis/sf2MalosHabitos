@@ -1,0 +1,65 @@
+support-for-ie ?= true
+
+opacity(n)
+	opacity n
+	if support-for-ie
+		filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
+
+body 
+	background-color black
+	font-size 16px
+
+footer
+	background-color #222222
+	bottom 0px
+	color white
+	font-size .7em
+	height 42px
+	margin 0 auto
+	position relative
+	width 950px
+
+	& #facebook-footer
+		position absolute
+		top -10px
+		right 0px
+
+	& #twitter-footer
+		position absolute
+		top -10px
+		right 60px
+
+#contenedor
+	margin 0 auto
+	min-height 600px
+	padding 1em
+	width 950px
+
+#contenido-footer
+	padding .7em
+
+#botones
+	width 100%
+	display none
+	& figure 
+		display inline-block
+		vertical-align top
+		opacity .7
+		width 128px
+		transition all 1s ease
+	& figure:first-child
+		margin-right 5px	
+	& figure:last-child
+		margin-left 5px
+	& figure:hover
+		opacity 1
+
+#frase
+#leyenda
+	display none
+
+.splash
+	margin-bottom 1em
+	text-align center
+	width 100%
+

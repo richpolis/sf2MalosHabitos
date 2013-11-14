@@ -1,0 +1,512 @@
+#control_galeria{
+        position: relative;
+        top: 10px;
+        width: 95%;
+        margin: 0 auto;
+        background-image: url(../images/Galeria/categorias_container.png);
+        background-repeat: no-repeat;
+}
+
+#control_galeria>li{
+	display:inline;
+	list-style:none;
+}
+.control-delante{
+    position: relative;
+    left: 10px;
+    top: -3px;
+    float: left;
+}
+.control-atras{
+    position: relative;
+    float: right;
+    right: 10px;
+    top: -3px;
+}
+
+#galeria{
+    padding-top:40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-left: 4px;
+    min-height: 400px;
+}
+
+#id_table_galeria{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 500px;
+}
+
+#menu_galeria{
+    color: rgb(18,18,18);
+    font-size:20px;
+    background:url(../images/seperator_line.png) no-repeat left bottom;
+    padding-bottom:5px !important;
+}
+#menu_galeria a{
+    position: relative;
+    top: 20px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+    font-weight: bold;
+    font-size: 20px;
+
+
+}
+
+
+#sf_admin_container #sf_admin_header li.menu-categorias-drag-li{
+    display: inline-block;
+    height: 20px;
+    color: white;
+    font-weight: normal;
+    font-size: smaller;
+}
+#sf_admin_container #sf_admin_header li.menu-categorias-drag-li a{
+    text-transform: none;
+    color: white;
+    padding: 10px;
+}
+#sf_admin_container #sf_admin_header li.menu-categorias-drag-li-active{
+    display: inline-block;
+    height: 20px;
+    color: black;
+    font-weight: bold;
+    font-size: smaller;
+}
+
+#sf_admin_container #sf_admin_header .menu-categorias-drag{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#principal_galeria { 
+   margin:0 auto;
+   padding: 0;
+   height: 100%;
+   width: 100%;
+   text-align: center;
+}
+
+.contenedor-archivo-galeria {
+   
+   width:230px;
+   height:140px;
+   max-width: 230px;
+   margin: 20px 7px 10px 0px;
+   padding: 0px;
+   background-color: rgb(18,18,18);
+   border: 1px solid black;
+   text-align:center;
+   vertical-align: middle;
+   float: left;
+}
+
+.contenedor-archivo-galeria a{
+    text-decoration: none;
+}   
+.contenedor-archivo-galeria .thumbnail{
+   height: 100%;
+   max-width: 230px;
+   position: relative;
+}
+.contenedor-archivo-galeria .titulo{
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+    color: white;
+    text-transform: capitalize;
+    position: relative;
+    height: 20px;
+    top: 5px;
+    z-index: 2;
+    
+}
+.contenedor-archivo-galeria .contenido {
+   float:left;
+   background:#000;
+   height:0px;
+   line-height:25px;
+   width:230px;
+   opacity:.0; 
+   filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+   -MS-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+   top: -60px;
+   left:0px;
+   color:#FFF;
+   font-size:12px;
+   font-family:"Lucida Grande", Arial, sans-serif;
+   z-index:100;
+   position: relative;
+   display: block;
+
+}
+
+.contenedor-archivo-galeria .contenido a{
+   text-decoration: none;
+   color: #FF716F;
+   font-size: 16px;
+   padding: 5px;
+   display: block;
+
+}
+.contenedor-archivo-galeria .contenido p{
+   font-size: 10px;
+   padding: 5px;
+   margin: 0;
+   
+}
+
+
+
+
+.detalles_foto{
+   float:left;
+   width:300px;
+   height:127px;
+   margin: 10px;
+   padding:5px;
+   text-align:left;
+   font-size: small;
+}
+
+.detalles_foto ul li{
+    list-style-image: none;
+    list-style-type: none;
+}
+
+#overlay{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:#000;
+    opacity:0.4;
+    filter:alpha(opacity=0.4);
+    z-index:200;
+}
+
+#preloader{
+    background: url("../images/preloader.gif") no-repeat 12px 10px #000000;
+    font-size: 11px;
+    height: 20px;
+    left: 50%;
+    line-height: 20px;
+    margin: -20px 0 0 -45px;
+    padding: 10px;
+    position: fixed;
+    text-align: left;
+    text-indent: 36px;
+    top: 50%;
+    width: 120px;
+    z-index: 201;
+    color:white;
+    opacity:0.8;
+    filter:alpha(opacity=0.8);
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+}
+
+.tooltip {
+    display: none;
+    background: transparent url(../images/tooltip/black_arrow.png);
+    font-size: 12px;
+    height: 70px;
+    width: 160px;
+    padding: 25px;
+    color: white;
+}
+.tooltip.bottom {
+	background:url(../images/tooltip/black_arrow_bottom.png);
+	padding-top:40px;
+	height:55px;
+}
+
+.tooltip.bottom {
+	background:url(../images/tooltip/black_arrow_bottom.png);
+}
+/* a .label element inside tooltip */
+.tooltip .label {
+	color:yellow;
+	width:35px;
+}
+
+.tooltip a {
+	color:#ad4;
+	font-size:11px;
+	font-weight:bold;
+}
+/* root element for scrollable */
+/* Album Thumbnails
+------------------------------ */
+#albums {
+    float: left;
+}
+.album {
+    margin: 0 12px 8px 0;
+    padding: 10px 8px 2px 10px;
+    float: left;
+    width: 300px;
+    border: 2px solid #FFFFFF;
+    background-color: #000000;
+    line-height: 100%;
+    color:white;
+    /*opacity:0.8;
+    filter:alpha(opacity=0.8);*/
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+
+}
+.album a img {  }
+.album .thumb {
+        float: left;
+        margin-right: 6px;
+}
+.album h3 {
+    padding: 0;
+    margin: 0;
+}
+.album p {
+    line-height: 12px;
+    font-size: 11px;
+        padding: 4px 0px 0px;
+        margin: 0px;
+}
+.albumdesc small {
+    color: red;
+}
+.controles-albums{
+    border: 1px solid white;
+    width: 80%;
+
+}
+.control-album-izquierda{
+    float: left;
+}
+.control-album-derecha{
+    float: right;
+}
+
+div.social_networks-3 {
+    padding:0;
+    margin:0;
+    bottom: 0px;
+    width: 100%;
+    text-align: right;
+}
+ul.social-networks {
+ list-style-type: none;
+ padding-right: 54px;
+}
+	
+ ul.social-networks li {
+    float:right;
+    border:none;
+    padding:0;
+    margin:0 0 0 5px;
+    list-style-type:none;
+}
+		
+ ul.social-networks li a {
+    text-decoration:none;
+    float:left;
+    position:relative;
+}
+                        
+		
+ul.social-networks li a:hover {
+    color:red;
+}
+ul.social-networks li a:hover span{
+    background-position:left -26px !important;
+}
+
+img.img-navegador-galeria-izquierdo{
+    margin-left: 10px;
+}
+img.img-navegador-galeria-derecho{
+    margin-right: 10px;
+}
+a.control-navegador-galeria-derecho{
+    float: right;
+    position: relative;
+    right: 0px;
+    top: 0px;
+}
+a.control-navegador-galeria-izquierdo{
+    float: left;
+    position: relative;
+    left: 0px;
+    top: 0px;
+}
+
+#publicacion-galeria { 
+    position: relative; /* important */ 
+    overflow: hidden;  /*important */ 
+    width: 970px; /* important */ 
+    height: 185px; /* important */ 
+    margin-top: 0;
+    margin-right: 0;
+    background: white;
+} 
+  
+#publicacion-galeria-frame {
+    position: relative;
+    width: 970px; /* important */ 
+} 
+  
+#publicacion-galeria-previous {
+    position: relative; 
+    left: 0px;
+    top:5px;    
+    background-color: white;
+    z-index: 1000;
+} 
+  
+#publicacion-galeria-next {
+    position: relative; 
+    right: 0px;
+    top:5px;
+    background-color: white; 
+    z-index: 1000;
+} 
+  
+#publicacion-galeria-content { 
+    position: absolute; 
+    top: 0px; 
+    left:0px;
+    
+} 
+  
+#publicacion-galeria-content li { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+} 
+  
+#publicacion-galeria-content { 
+  width: 5418px; 
+} 
+
+#publicacion-galeria ul li { 
+        display: block; 
+        float: left; 
+        margin: 10px; 
+        background-color: rgb(255,255,255); 
+}
+
+#publicacion-galeria ul li img { 
+    display: block; 
+    width: 289px; 
+    height: 152px;
+    border: 5px solid rgb(130,216,249);
+    background-color: black;
+}
+
+li a.image-wrap {
+    display:block;
+    overflow:hidden;
+    width:299px;
+    height:162px;
+    position:relative;
+    left: 5px;
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-image: url(../images/loader.gif);
+    background-color:#1e1e1e;
+    background-color: rgba(255,255,255,.08);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+
+li a.image-wrap .video-icon {
+    display:block;
+    position:absolute;
+    left:5px;
+    top:-157px;
+    width:299px;
+    height:162px;
+    background:url(../images/mascara_video.png) 50% 50% no-repeat;
+    cursor:pointer;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+li a.image-wrap:hover .video-icon {
+    top:5px;
+}
+
+li a.image-wrap .zoom-icon {
+    display:block;
+    position:absolute;
+    left:5px;
+    top:-157px;
+    width:299px;
+    height:162px;
+    background:url(../images/mascara_zoom.png) 50% 50% no-repeat;
+    cursor:pointer;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+li a.image-wrap:hover .zoom-icon {
+    top:5px;
+}
+
+
+
+.galeria-item a.image-wrap{
+    display:block;
+    overflow:hidden;
+    width:128px;
+    height:95px;
+    position:relative;
+    left: 2px;
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-image: url(../images/loader.gif);
+    background-color:#1e1e1e;
+    background-color: rgba(255,255,255,.08);
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+}
+.galeria-item a.image-wrap .video-icon {
+    display:block;
+    position:absolute;
+    left:5px;
+    top:-90px;
+    width:128px;
+    height:95px;
+    background:url(../images/mascara_video.png) 50% 50% no-repeat;
+    cursor:pointer;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+.galeria-item a.image-wrap .zoom-icon {
+    display:block;
+    position:absolute;
+    left:5px;
+    top:-90px;
+    width:128px;
+    height:95px;
+    background:url(../images/mascara_zoom.png) 50% 50% no-repeat;
+    cursor:pointer;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
+.galeria-item a.image-wrap:hover .video-icon {
+    top:5px;
+}
+
+.galeria-item a.image-wrap:hover .zoom-icon {
+    top:5px;
+}

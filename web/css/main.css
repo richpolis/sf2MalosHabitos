@@ -1,0 +1,611 @@
+article header {
+  margin-top: 50px;
+  position: relative;
+  width: 100%;
+}
+article header ul {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 70px;
+  -webkit-transform: rotate(-4deg);
+  -moz-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
+  -o-transform: rotate(-4deg);
+  transform: rotate(-4deg);
+  text-align: right;
+  width: 100%;
+  padding-right: 20px;
+  position: absolute;
+  top: -25px;
+}
+article header ul li {
+  display: inline-block;
+  vertical-align: top;
+  text-transform: uppercase;
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 0.8em;
+}
+article header ul li a {
+  display: block;
+  text-decoration: none;
+}
+a.red-social-facebook,
+a.red-social-twitter {
+  display: inline-block;
+  vertical-align: top;
+  height: 35px;
+  width: 36px;
+}
+a.red-social-twitter {
+  background: url("../images/keyarts/artists/artistas_socialmedia.png") no-repeat 0px 0px;
+}
+a.red-social-facebook {
+  background: url("../images/keyarts/artists/artistas_socialmedia.png") no-repeat -49px 0px;
+}
+a.home {
+  background: url("../images/keyarts/home/menu.png") no-repeat 0px 0px;
+  width: 40px;
+  height: 10px;
+}
+a.home:hover,
+a.home.active {
+  background: url("../images/keyarts/home/menu.png") no-repeat 0px -10px;
+}
+a.about {
+  background: url("../images/keyarts/home/menu.png") no-repeat -55px 0px;
+  width: 80px;
+  height: 10px;
+}
+a.about:hover,
+a.about.active {
+  background: url("../images/keyarts/home/menu.png") no-repeat -55px -10px;
+}
+a.news {
+  background: url("../images/keyarts/home/menu.png") no-repeat -145px 0px;
+  width: 70px;
+  height: 10px;
+}
+a.news:hover,
+a.news.active {
+  background: url("../images/keyarts/home/menu.png") no-repeat -145px -10px;
+}
+a.artistas {
+  background: url("../images/keyarts/home/menu.png") no-repeat -225px 0px;
+  width: 70px;
+  height: 10px;
+}
+a.artistas:hover,
+a.artistas.active {
+  background: url("../images/keyarts/home/menu.png") no-repeat -225px -10px;
+}
+a.shop {
+  background: url("../images/keyarts/home/menu.png") no-repeat -305px 0px;
+  width: 50px;
+  height: 10px;
+}
+a.shop:hover,
+a.shop.active {
+  background: url("../images/keyarts/home/menu.png") no-repeat -305px -10px;
+}
+a.contact {
+  background: url("../images/keyarts/home/menu.png") no-repeat -369px 0px;
+  width: 80px;
+  height: 10px;
+}
+a.contact:hover,
+a.contact.active {
+  background: url("../images/keyarts/home/menu.png") no-repeat -369px -10px;
+}
+body {
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  font-family: "Helvética", "Verdana", "Arial";
+}
+header.header-about {
+  background: url("../images/keyarts/about/seccion_acercade.png") no-repeat center center;
+  height: 78px;
+}
+header.header-news {
+  background: url("../images/keyarts/news/seccion_noticias.png") no-repeat center center;
+  height: 139px;
+}
+header.header-artistas {
+  background: url("../images/keyarts/artists/seccion_artistas.png") no-repeat center center;
+  height: 139px;
+}
+header.header-shop {
+  background: url("../images/keyarts/shop/seccion_tienda.png") no-repeat center center;
+  height: 139px;
+}
+header.header-contact {
+  background: url("../images/keyarts/contact/seccion_contacto.png") no-repeat 0px 0px;
+  height: 141px;
+}
+ul.lista-shop {
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+}
+ul.lista-shop li {
+  display: inline-block;
+  vertical-align: top;
+  width: 229px;
+  margin: 15px 37px 10px;
+  overflow: hidden;
+}
+ul.lista-shop li h3 {
+  text-transform: capitalize;
+  font-size: 0.9em;
+  font-style: italic;
+  font-weight: normal;
+}
+ul.lista-shop li figure {
+  background: url("../images/keyarts/shop/thumb_tienda.png") no-repeat center center;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 152px;
+  width: 229px;
+}
+ul.lista-shop li figure img {
+  margin: 4px;
+  height: 144px;
+  width: 221px;
+}
+#about figure.logo,
+#about p {
+  display: inline-block;
+  margin-top: 80px;
+  vertical-align: middle;
+}
+#about figure.logo {
+  width: 49%;
+  text-align: center;
+}
+#about p {
+  width: 49%;
+}
+#container {
+  border-top: 5px solid #000;
+  border-bottom: 5px solid #000;
+  margin: 0 auto;
+  width: 1024px;
+}
+#container header {
+  text-align: center;
+  position: relative;
+}
+#container header div.logo {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  margin-left: -80px;
+  z-index: 1000;
+}
+#container header nav {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-align: right;
+  height: 90px;
+  width: 100%;
+}
+#container header nav ul {
+  margin: 54px 0 0;
+  padding: 0;
+  -webkit-transform: rotate(-4deg);
+  -moz-transform: rotate(-4deg);
+  -ms-transform: rotate(-4deg);
+  -o-transform: rotate(-4deg);
+  transform: rotate(-4deg);
+  border-bottom: 2px solid #808080;
+  width: 50%;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+#container header nav li {
+  display: inline-block;
+  vertical-align: top;
+  text-transform: uppercase;
+  margin-left: 6px;
+}
+#container header nav li a {
+  text-decoration: none;
+  display: block;
+}
+#news {
+  position: relative;
+}
+#news .ctl-news-left {
+  position: absolute;
+  top: 60%;
+  left: 0px;
+}
+#news .ctl-news-right {
+  position: absolute;
+  top: 60%;
+  right: 0px;
+}
+.contacto {
+  margin: 0 auto 100px;
+  width: 90%;
+}
+.contacto .contenido,
+.contacto .formulario {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 30px;
+  width: 48%;
+}
+.contacto .contenido .logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.contacto .contenido .contenido-contact {
+  text-align: justify;
+}
+.contacto .formulario form {
+  margin-left: 100px;
+}
+.contacto .formulario .input-formulario {
+  background: url("../images/keyarts/contact/form_line.png") no-repeat 0px 0px;
+  padding-top: 24px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+.contacto .formulario .input-formulario label,
+.contacto .formulario .input-formulario input,
+.contacto .formulario .input-formulario textarea {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 1em;
+  text-transform: uppercase;
+  font-style: normal;
+  padding: 5px;
+  border: none;
+}
+.contacto .formulario .input-formulario input {
+  text-transform: none;
+  float: right;
+  margin-right: 45px;
+}
+.contacto .formulario .input-formulario button {
+  background: none;
+  border: none;
+  margin-right: 50px;
+  float: right;
+  text-transform: uppercase;
+}
+.contenido-ajax {
+  padding: 10px 0px;
+  margin: 30px auto;
+  width: 95%;
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  display: none;
+}
+.contenido-ajax .galeria-artistas,
+.contenido-ajax .contenido-artistas {
+  display: inline-block;
+  vertical-align: top;
+}
+.contenido-ajax .galeria-artistas {
+  width: 40%;
+  margin-top: 10px;
+  position: relative;
+}
+.contenido-ajax .galeria-artistas img {
+  width: 100%;
+}
+.contenido-ajax .galeria-artistas ul {
+width
+  padding: 0;
+  margin: 0;
+}
+.contenido-ajax .galeria-artistas li {
+  list-style: none;
+}
+.contenido-ajax .galeria-artistas .ctl-galeria-artistas-left {
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  margin-top: -50px;
+}
+.contenido-ajax .galeria-artistas .ctl-galeria-artistas-left a {
+  display: block;
+  background: url("../images/keyarts/artists/foto_left_arrow.png") no-repeat center center;
+  height: 51px;
+  width: 37px;
+  z-index: 1000;
+}
+.contenido-ajax .galeria-artistas .ctl-galeria-artistas-right {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  margin-top: -50px;
+}
+.contenido-ajax .galeria-artistas .ctl-galeria-artistas-right a {
+  display: block;
+  background: url("../images/keyarts/artists/foto_right_arrow.png") no-repeat center center;
+  height: 51px;
+  width: 37px;
+  z-index: 1000;
+}
+.contenido-ajax .contenido-artistas {
+  width: 56%;
+  margin-left: 3%;
+}
+.contenido-ajax .contenido-artistas h3 {
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 2em;
+  margin-top: 10px;
+}
+.contenido-ajax .contenido-artistas p {
+  font-style: italic;
+}
+.contenido-ajax .redes-sociales-artistias {
+  width: 100%;
+  height: 50px;
+}
+.lista-artistas {
+  margin: 0px auto;
+  padding-left: 2px;
+  width: 90%;
+}
+.lista-artistas ul {
+  margin: 0px;
+  padding: 0px;
+}
+.lista-artistas li {
+  display: inline-block;
+  height: 213px;
+  margin: 10px 9px;
+  vertical-align: top;
+  width: 284px;
+}
+.lista-artistas li figure {
+  position: relative;
+  height: 213px;
+  width: 284px;
+}
+.lista-artistas li img {
+  width: 100%;
+  height: 100%;
+}
+.lista-artistas li figcaption {
+  background: url("../images/keyarts/artists/thumb_artistas_normal.png") no-repeat center center;
+  color: transparent;
+  height: 100%;
+  left: 0px;
+  top: 0px;
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -ms-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+}
+.lista-artistas li figcaption span {
+  margin: 20px;
+  display: block;
+}
+.lista-artistas li figcaption:hover {
+  background: url("../images/keyarts/artists/thumb_artistas_over.png") no-repeat center center;
+  color: #fff;
+}
+.knp_last_tweets {
+  margin: 120px auto 100px auto;
+  text-align: center;
+  width: 80%;
+  height: 300px;
+  overflow: hidden;
+}
+.knp_last_tweets ul {
+  margin: 0;
+  padding: 0;
+}
+.knp_last_tweets ul li {
+  border-bottom: 1px solid #000;
+  list-style: none;
+  width: 100%;
+  height: 100px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.knp_last_tweets ul li div.tweet-item-imagen,
+.knp_last_tweets ul li div.tweet-item-contenido {
+  display: inline-block;
+  vertical-align: middle;
+}
+.knp_last_tweets ul li span.tweet-item-tiempo {
+  display: block;
+  text-align: right;
+}
+.knp_last_tweets ul li div.tweet-item-contenido {
+  width: 90%;
+  text-align: left;
+  margin-top: 5px;
+}
+.knp_last_tweets ul li div.tweet-item-imagen {
+  padding-top: 15px;
+}
+.noticias {
+  padding: 0;
+  margin: 50px auto;
+  width: 90%;
+}
+.noticias li {
+  list-style: none;
+  margin-top: 20px;
+}
+.noticias div.titulo-noticia {
+  border-bottom: 1px solid #000;
+  margin: 10px 0px;
+  position: relative;
+  width: 100%;
+  font-size: 2em;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+}
+.noticias div.titulo-noticia span {
+  position: absolute;
+  right: 0px;
+  font-size: 0.7em;
+  color: #808080;
+  text-transform: capitalize;
+  font-style: normal;
+  font-weight: normal;
+}
+.noticias figure.imagen-noticia,
+.noticias p,
+.noticias div.imagenes-noticia {
+  display: inline-block;
+  vertical-align: top;
+}
+.noticias figure.imagen-noticia {
+  border: 3px solid #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 0px 0px 2px #808080;
+  -moz-box-shadow: 0px 0px 2px #808080;
+  -ms-box-shadow: 0px 0px 2px #808080;
+  -o-box-shadow: 0px 0px 2px #808080;
+  box-shadow: 0px 0px 2px #808080;
+  width: 228px;
+}
+.noticias figure.imagen-noticia img {
+  width: 100%;
+}
+.noticias p {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 612px;
+  padding: 0px 20px;
+  font-size: 0.8em;
+  text-align: justify;
+}
+.noticias div.imagenes-noticia {
+  width: 50px;
+  vertical-align: top;
+}
+.categorias-shop {
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #808080;
+  color: #808080;
+  font-style: italic;
+  font-weight: bold;
+  margin: 30px auto;
+  text-align: center;
+  text-transform: uppercase;
+  width: 90%;
+}
+.categorias-shop a.categoria-shop {
+  color: #808080;
+  display: inline-block;
+  margin: 10px 0px;
+  -webkit-transition: color 0.5s ease;
+  -moz-transition: color 0.5s ease;
+  -ms-transition: color 0.5s ease;
+  -o-transition: color 0.5s ease;
+  transition: color 0.5s ease;
+  text-decoration: none;
+  vertical-align: top;
+}
+.categorias-shop a.categoria-shop:hover,
+.categorias-shop a.categoria-shop.active {
+  color: #000;
+}
+.categorias-shop a.categoria-shop:first-child {
+  margin-right: 20px;
+}
+#contact {
+  position: relative;
+}
+#contact .logo-interactive-valley {
+  bottom: -94px;
+  height: 21px;
+  right: 0px;
+  position: absolute;
+  width: 160px;
+}
+.item-shop,
+.item-artista {
+  cursor: pointer;
+}
+.contenido-producto {
+  width: 400px;
+  margin: 0 auto;
+}
+.contenido-producto h3 {
+  font-style: italic;
+}
+.contenido-producto hr {
+  color: transparent;
+}
+.contenido-producto .contenedor-galeria-producto {
+  position: relative;
+}
+.contenido-producto ul.galeria-producto {
+  margin: 0;
+  padding: 0;
+}
+.contenido-producto .ctl-galeria-producto-left {
+  position: absolute;
+  left: -50px;
+  top: 50%;
+  margin-top: -23px;
+}
+.contenido-producto .ctl-galeria-producto-left a {
+  background: url("../images/keyarts/shop/left_arrowwhite.png") no-repeat center center;
+  height: 46px;
+  display: block;
+  width: 32px;
+  z-index: 2000;
+}
+.contenido-producto .ctl-galeria-producto-right {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  margin-top: -23px;
+}
+.contenido-producto .ctl-galeria-producto-right a {
+  background: url("../images/keyarts/shop/right_arrowwhite.png") no-repeat center center;
+  height: 46px;
+  display: block;
+  width: 32px;
+  z-index: 2000;
+}
+.contenido-producto p {
+  font-size: 0.8em;
+  font-style: italic;
+}
+.contenido-producto input {
+  font-size: 0.8em;
+  font-weight: bold;
+  width: 200px;
+  border: none;
+  padding: 5px;
+}
+.contenido-producto .input-form-producto {
+  margin-top: 10px;
+}
+.contenido-producto button {
+  float: right;
+  margin-right: 200px;
+  background: none;
+  border: none;
+  color: #fff;
+}

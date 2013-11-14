@@ -1,0 +1,18 @@
+<ul class="nav nav-list">
+    <li class="nav-header">Galerias</li>
+    <li {% if pagina=="galerias-principal" %} class="active" {% endif %}>
+        <a href="{{path('backend_galerias_principal')}}">Principal</a>
+    </li>
+    <li {% if pagina=="galerias-proyectos" %} class="active" {% endif %}>
+        <a href="{{path('backend_galerias_proyecto')}}">Proyectos</a>
+    </li>
+    
+    <li class="nav-header">Proyectos</li>
+    <li {% if pagina=="publicaciones-proyectos" %} class="active" {% endif %}>
+        <a href="{{path('publicaciones_proyecto')}}">Proyectos</a>
+    </li>
+    <li class="nav-header">Configuraciones</li>
+    <li {% if pagina=="configuraciones" %} class="active" {% endif %}>
+        <a href="{{path('backend_configuraciones')}}">Configuraciones</a>
+    </li>
+</ul>

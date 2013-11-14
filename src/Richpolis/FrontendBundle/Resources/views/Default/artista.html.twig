@@ -1,0 +1,38 @@
+        <div class="galeria-artistas">
+            <ul class="lista-galeria-artistas">
+                {% for registro in range(1,6) %}
+                <li>
+                    <figure>
+                        <img src="{{asset('images/demo/M16-Eagle-Nebula.jpeg')}}" alt="imagen">
+                    </figure>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="ctl-galeria-artistas-left"></div>
+            <div class="ctl-galeria-artistas-right"></div>
+        </div>
+        <div class="contenido-artistas">
+            <h3>Nombre del artista</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita odit iure ipsam voluptatum et? Ducimus, illo, sed, recusandae, deserunt facere dolor consectetur esse at rem explicabo odit ab minima architecto.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, deserunt, nostrum, aspernatur, reprehenderit nam quidem minus illo ducimus consequuntur iure ut deleniti quae magni tempore assumenda similique eos atque nulla.
+            </p>
+        </div>
+        <div class="redes-sociales-artistias">
+            <a href="#" class="red-social-twitter"></a>
+            <a href="#" class="red-social-facebook"></a>
+        </div>
+<script>
+    $(document).ready(function(){
+        $('.lista-galeria-artistas').bxSlider({
+            minSlides: 1,
+            maxSlides: 1,
+            slideMargin: 10,
+            pager: true,
+            prevSelector: '.ctl-galeria-artistas-left',
+            nextSelector: '.ctl-galeria-artistas-right',
+            prevText: '',
+            nextText: '',
+        });
+    });
+</script>

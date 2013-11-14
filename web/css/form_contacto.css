@@ -1,0 +1,44 @@
+.form-contacto{text-align: left;margin-left:20px; padding:0;}
+.form-contacto div {margin-bottom:20px;}
+.form-contacto label {display: block; font-weight: 700; font-size: 0.852em;padding-bottom:3px;}
+.form-contacto label.required:after {content: "*"; color:#d84645; padding-left:3px;}
+.form-contacto input, .form-contacto textarea {  padding:8px 8px; font-size:0.852em; border:0;width:432px !important;}
+.form-contacto input {background: url(../images/input-bg.png) no-repeat 0 0;  height:26px;}
+.form-contacto input:focus, .form-contacto textarea:focus {background-color:rgba(255,255,255,0.5);}
+
+.form-contacto textarea {background: url(../images/textarea-bg.png) no-repeat 0 0; height:206px;}
+.form-contacto button, input.form-submit {
+	height:auto;
+	text-shadow: 1px 1px 0 #B84444;
+	text-transform: uppercase; 
+	/*background:url(../images/keyarts/botonenviar.png) repeat center center; */
+	font-family: 'CenturyGothicRegular', Arial, Helvetica, sans-serif;
+	background-image: none;
+	background-color: #920d10;
+	color:#E7E7DE; 
+	padding:7px 10px 7px 10px; 
+	font-weight:normal; 
+	font-size:1.3em; 
+
+	-webkit-transition: background .5s ease;
+	-moz-transition: background .5s ease;
+	-ms-transition: background .5s ease;
+	-o-transition: background .5s ease;
+	transition: background .5s ease;
+}
+.form-contacto button:focus, 
+.form-contacto button:hover, 
+input.form-submit:hover, 
+input.form-submit:focus {
+	background:#2f2e2a; 
+	text-shadow: 1px 1px 0 #000;
+}
+input.form-submit {
+	width:100px !important; 
+	font-family: 'CenturyGothicRegular', Arial, Helvetica, sans-serif;
+}
+.form-validation-errors {color:#d84645; }
+.form-mail-sent-ok {color:#398F14;}
+.form-mail-sent-ok,.form-validation-errors, .form-mail-sent-ng {background:none;border:0 !important; margin:0 !important; font-size:1.3em; font-family: "Primavera", sans-serif;  text-align:center; } 
+.form-not-valid-tip-no-ajax, .form-mail-sent-ng  {color:#d84645 !important;}
+span.form-not-valid-tip {color: #d84645; font-size: 12px; left: 10px !important; top: 5% !important; z-index: 100; border:0 !important; background: 0 !important;}

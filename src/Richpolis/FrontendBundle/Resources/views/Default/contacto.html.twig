@@ -1,0 +1,106 @@
+{% extends "FrontendBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+{{parent()}}
+<link rel="stylesheet" href="{{ asset('css/form_contacto.css') }}">
+{% endblock %}
+
+{% block body %}
+
+{%if error is not defined%}
+    {%set error=false%}
+{%endif%}
+{%if ok is not defined%}
+    {%set ok=false%}
+{%endif%}
+{%if mensaje is not defined%}
+    {%set mensaje=""%}
+{%endif%}
+
+{% set locale = app.request.locale %}
+<section>
+    <article class="contacto">
+        <figure id="logo-contacto">
+            <img src="{{asset('images/keyarts/logo_contacto.png')}}" alt="La niña del mezcal"/>
+        </figure>
+        <div>
+            {% if contacto.texto %}
+            {{contacto.texto|raw}}
+            {% endif %}
+        </div>
+    </article>
+    <article class="form contacto">
+        <form action="{{path('frontend_contacto',{'_locale':locale})}}" method="post" class="form-contacto {%if error == true%}invalid{%endif%} {%if ok == true%}sent{%endif%}" novalidate="novalidate">
+          <div>
+             <label for="richpolis_backendbundle_contactotype_name" class="required">{% trans %}Name{% endtrans %}</label>
+             <span class="form-contacto-control-wrap Name {%if form.name.vars.errors  | length > 0%}form-not-valid{%endif%}">
+                 {{ form_widget(form.name, {'attr': {'class': 'form-contacto-control form-text form-validates-as-required','size':'40','aria-requiered':'true'}}) }}
+             </span>
+             <span class="form-not-valid-tip-no-ajax"> 
+                 {{ form_errors(form.name) }}
+             </span>
+         </div>
+         <div>
+             <label for="richpolis_backendbundle_contactotype_email" class="required">Email</label>
+             <span class="form-contacto-control-wrap E-mail {%if form.email.vars.errors  | length > 0%}form-not-valid{%endif%}">
+                 {{ form_widget(form.email, {'attr': {'class': 'form-contacto-control form-text form-email form-validates-as-required form-validates-as-email','size':'40','aria-requiered':'true'}}) }}
+             </span>
+             <span class="form-not-valid-tip-no-ajax"> 
+                 {{ form_errors(form.email) }}
+             </span>    
+         </div>
+          <div>
+             <label for="richpolis_backendbundle_contactotype_telefono">{% trans %}Telephone{% endtrans %}</label> 
+             <span class="form-contacto-control-wrap telefono {%if form.telefono.vars.errors  | length > 0%}form-not-valid{%endif%}">
+                 {{ form_widget(form.telefono, {'attr': {'class': 'form-contacto-control form-text','size':'40','aria-requiered':'false'}}) }}
+             </span>
+             <span class="form-not-valid-tip-no-ajax"> 
+                 {{ form_errors(form.telefono) }}
+             </span>
+         </div>    
+         <div>
+             <label for="richpolis_backendbundle_contactotype_body" class="required">{% trans %}Message{% endtrans %}</label>
+             <span class="form-contacto-control-wrap message {%if form.body.vars.errors  | length > 0%}form-not-valid{%endif%}">
+                 {{ form_widget(form.body, {'attr': {'class': 'form-contacto-control form-textarea form-validates-as-required','size':'40','aria-requiered':'true'}}) }}
+             </span>
+             <span class="form-not-valid-tip-no-ajax"> 
+                 {{ form_errors(form.body) }}
+             </span>
+         </div>
+         <div>
+             <input type="submit" value="{% trans %}Send{% endtrans %}" class="form-contacto-control form-submit">
+             <img class="ajax-loader" src="/images/ajax-loader.gif" alt="Enviando ..." style="visibility: hidden;">
+         </div>
+         {% if ok == true and error == false %}    
+         <div class="form-response-output form-mail-sent-ok">
+             {{mensaje}}
+         </div>
+         {% elseif ok == false and error == true %}
+         <div class="form-response-output form-mail-sent-ng form-validation-errors">
+             {{mensaje}}{{form_errors(form)}}
+         </div>    
+         {% endif %}    
+         {{ form_rest(form) }}    
+     </form>   
+    </article>
+</section>
+{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+<script>
+/*$(document).ready( function() {   
+    $("input.form-submit").click( function() {
+        $('img.ajax-loader').css({visibility: 'visible'});
+        $("img.ajax-loader").fadeIn("fast",function(){
+            $.post("{{path('frontend_contacto',{'_locale':locale})}}",$("form.form-contacto").serialize(),
+            function(data){
+                alert(data);
+                $("#contacts").html(data).fadeIn("fast");
+            });    
+        });
+    });    
+});*/
+</script>
+
+{% endblock %}

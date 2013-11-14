@@ -1,0 +1,55 @@
+<div class="contenido-producto">
+    <h3>Nombre del producto</h3>
+    <div class="contenedor-galeria-producto">
+        <ul class="galeria-producto">
+            {% for galeria in range(1,6) %}
+                <li>
+                    <figure>
+                        <img src="{{asset('images/demo/20426_nebula.jpg')}}" alt="{{galeria}}"/>
+                    </figure>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="ctl-galeria-producto-left"></div>    
+        <div class="ctl-galeria-producto-right"></div>
+    </div>
+    <div class="descripcion-producto">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, earum, error aperiam unde incidunt voluptatem doloribus illo nam laborum molestiae. Dolorem, porro velit nostrum doloribus officia sapiente fugiat vitae sequi?
+        </p>
+    </div>
+    <hr/>
+    <h3>Comprar</h3>
+    <p>Gracias por el interes en nuestro producto, envianos tu nombre, email o telefono y te contactaremos para hacer el pedido</p>
+    <form action="" class="form-pedido-producto">
+        <div class="input-form-producto">
+            <input type="text" value="" placeholder="Nombre*"/>
+        </div>
+        <div class="input-form-producto">
+            <input type="text" value="" placeholder="Email*"/>
+        </div>
+        <div class="input-form-producto">
+            <input type="text" value="" placeholder="Telefono (opcional)"/>
+        </div>
+        <div class="input-form-producto">
+            <button id="enviar-form-producto">Enviar</button>
+        </div>
+    </form>
+
+</div>
+
+
+<script>
+    $(document).ready(function(){
+        $('.galeria-producto').bxSlider({
+            minSlides: 1,
+            maxSlides: 1,
+            slideMargin: 10,
+            pager: false,
+            prevSelector: '.ctl-galeria-producto-left',
+            nextSelector: '.ctl-galeria-producto-right',
+            prevText: '',
+            nextText: '',
+        });
+    });
+</script>

@@ -1,0 +1,57 @@
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block menu_horizontal %}
+    {% include 'BackendBundle:Default:menu_horizontal.html.twig' with {'pagina': 'galerias'} %}
+{% endblock %}
+
+{% block siderbar %}
+     {% if galeria == "Galeria Principal" %}
+        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_principal'} %}
+     {% elseif galeria == "Galeria About" %}
+        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_about'} %}
+     {% elseif galeria == "Galeria Distribuidores" %}
+        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_distribuidores'} %}
+     {% elseif galeria == "Galeria How To Mix" %}
+        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_howtomix'} %}   
+     {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ form_stylesheet(edit_form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ tinymce_init() }}
+    {{ form_javascript(edit_form) }}
+{% endblock %}
+
+{% block body %}
+<h1>Editar galeria "{{entity.categoria}}"</h1>
+
+<form id="formPrincipal" action="{{ path('categorias_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+</form>
+    <p style="margin-top: 10px;">
+    <ul class="record_actions nav nav-pills">
+        <li>
+            <button class="btn btn-primary" onclick="$('#formPrincipal').submit();">Actualizar</button>
+        </li>
+        <li>&nbsp;</li>
+        <li>
+            <button class="btn" onclick="location.href='{{ path('categorias') }}'">
+                Regresar
+            </button>
+        </li>
+        <li>&nbsp;</li>
+        <li>
+            <form action="{{ path('categorias_delete', { 'id': entity.id }) }}" method="post">
+                    {{ form_widget(delete_form) }}
+                    <button class="btn btn-danger" type="submit">Eliminar</button>
+            </form>
+        </li>
+    </ul>
+
+    </p>
+{% endblock %}

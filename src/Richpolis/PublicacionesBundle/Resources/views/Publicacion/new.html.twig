@@ -1,0 +1,40 @@
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ form_stylesheet(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ tinymce_init() }}
+    {{ form_javascript(form) }}
+{% endblock %}
+
+{% block menu_horizontal %}
+    {% include 'BackendBundle:Default:menu_horizontal.html.twig' with {'pagina': 'publicacion'} %}
+{% endblock %}
+
+{% block siderbar %}
+   {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': entity.categoria.slug} %}
+{% endblock %}        
+    
+{% block body %}
+<h1>Nuevo registro</h1>
+
+<form action="{{ path('publicacion_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p style="margin-top: 10px;">
+        <ul class="record_actions">
+            <li style=" list-style: none; display: inline;">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+            </li>
+            <li style=" list-style: none;  display: inline;">
+                <a class="btn" href="{{ path('publicacion') }}">
+                    Regresar
+                </a>
+            </li>
+        </ul>
+    </p>
+</form>
+{% endblock %}

@@ -1,0 +1,66 @@
+body {
+  background-color: #000;
+  font-size: 16px;
+}
+footer {
+  background-color: #222222;
+  bottom: 0px; 
+  color: white;
+  font-size:.7em; 
+  height: 42px; 
+  margin: 0 auto;
+  position: relative;
+  width: 950px;
+}
+footer #facebook-footer {
+  position: absolute;
+  top: -10px;
+  right: 0px;
+}
+footer #twitter-footer {
+  position: absolute;
+  top: -10px;
+  right: 60px;
+}
+
+#contenido-footer{
+  padding: 1.1em;
+}
+
+#contenedor {
+  margin: 0 auto;
+  min-height: 600px;
+  padding: 1em;
+  width: 950px;
+}
+#botones {
+  width: 100%;
+  display: none;
+}
+#botones figure {
+  display: inline-block;
+  vertical-align: top;
+  opacity: 0.7;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+  width: 128px;
+  transition: all 1s ease;
+}
+#botones figure:first-child {
+  margin-right: 5px;
+}
+#botones figure:last-child {
+  margin-left: 5px;
+}
+#botones figure:hover {
+  opacity: 1;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+}
+#frase,
+#leyenda {
+  display: none;
+}
+.splash {
+  margin-bottom: 1em;
+  text-align: center;
+  width: 100%;
+}

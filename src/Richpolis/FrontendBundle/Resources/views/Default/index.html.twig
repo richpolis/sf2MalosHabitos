@@ -1,0 +1,257 @@
+{% extends "FrontendBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+ {{parent()}}
+ <link rel="stylesheet" href="{{asset('css/jquery.bxslider.css')}}"/>
+ <link rel="stylesheet" href="{{asset('css/jquery.modal.css')}}"/>
+{% endblock %}
+
+{% block body %}
+<article id="twitter-feed">
+     {% render(controller("FrontendBundle:Default:lastTweets",{'username': 'richpolis'})) %}               
+</article>
+<article id="about">
+    <header class="header-about">
+        <ul>
+            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+            <li><a href="#about" class="about active" rel="scroll">&nbsp;</a></li>
+            <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
+            <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
+            <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
+            <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
+        </ul>
+    </header>
+    <figure class="logo">
+        <img src="{{asset('images/keyarts/about/logo.png')}}" alt="">
+    </figure>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, corporis maxime quasi deserunt hic praesentium sit. Ipsa, quia, unde, veniam, quidem optio corrupti voluptatem ex eligendi dolorum nisi excepturi repellat.
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, quas, officiis dicta quidem atque aperiam accusantium illum similique facilis perferendis eos ullam officia minima possimus laudantium sapiente delectus. Expedita, iste.
+    </p>	
+</article>
+<article id="news">
+    <header class="header-news">
+        <ul>
+            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+            <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
+            <li><a href="#news" class="news active" rel="scroll">&nbsp;</a></li>
+            <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
+            <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
+            <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
+        </ul>
+    </header>
+    <div class="ctl-news-left">
+        <img src="{{asset('images/keyarts/news/left_arrow.png')}}" alt="left"/>
+    </div>
+    <ul class="noticias">
+		{% for noticia in range(1,3) %}
+        <li class="noticia">
+            <div class="titulo-noticia">
+                Titulo de la noticia 
+                <span>
+                    fecha de la noticia	
+                </span>
+            </div>
+            <figure class="imagen-noticia">
+                <img src="{{asset('images/demo/M16-Eagle-Nebula.jpeg')}}" alt="titulo de la imagen">
+            </figure>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, odio quae dolorem laudantium officiis dignissimos optio qui aliquam repudiandae earum cupiditate provident rem nesciunt ab a quibusdam soluta error nulla.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, nemo, dicta, iusto, quam officiis et excepturi culpa in magni reprehenderit inventore voluptatum consequuntur voluptates expedita incidunt deserunt atque ad quae.
+            </p>
+            <div class="imagenes-noticia">
+                <div class="boton-mas">
+                    <img src="{{asset('images/keyarts/news/mas.png')}}" alt="más"/>	
+                </div>
+            </div>
+        </li>
+		{% endfor %}
+    </ul>
+    <div class="ctl-news-right">
+        <img src="{{asset('images/keyarts/news/right_arrow.png')}}" alt="right"/>
+    </div>
+</article>
+<article id="artistas">
+    <header class="header-artistas">
+        <ul>
+            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+            <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
+            <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
+            <li><a href="#artistas" class="artistas active" rel="scroll">&nbsp;</a></li>
+            <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
+            <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
+        </ul>
+    </header>
+    <div class="contenido-ajax">
+        
+    </div>
+    <div class="lista-artistas">
+        <ul>
+        {% for registro in range(1,6) %}
+            <li class="item-artista" data-artista="{{registro}}" data-url="{{url('show_artista',{'id':registro})}}">
+                <figure>
+                    <img src="{{asset('images/keyarts/artists/thumb_artistas_tamano.png')}}" alt="imagen">
+                    <figcaption>
+                        <span>Nombre Artista {{registro}}</span>
+                    </figcaption>
+                </figure>
+            </li>
+	{% endfor %}
+        </ul>
+    </div>
+</article>
+<article id="shop">
+    <header class="header-shop">
+        <ul>
+            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+            <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
+            <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
+            <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
+            <li><a href="#shop" class="shop active" rel="scroll">&nbsp;</a></li>
+            <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
+        </ul>
+    </header>
+    <div class="categorias-shop">
+        <a href="#" class="categoria-shop">
+            Ropa
+        </a>
+        <a href="#" class="categoria-shop active">
+            Discos
+        </a>
+    </div>
+    <ul class="lista-shop">
+        {% for registro in range(1,9) %}
+        <li>
+            <h3>Numero del registro {{registro}}</h3>
+            <figure  class="item-shop" data-shop="{{registro}}">
+                <img src="{{asset('images/demo/18465_nebula_horsehead_nebula.jpg')}}" alt="Registro {{registro}}"/>
+            </figure>
+        </li>
+        {% endfor %}
+    </ul>
+</article>
+<article id="contact">
+    <header class="header-contact">
+        <ul>
+            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+            <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
+            <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
+            <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
+            <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
+            <li><a href="#contact" class="contact active" rel="scroll">&nbsp;</a></li>
+        </ul>
+    </header>
+    <div class="contacto">
+        <div class="contenido">
+            <figure class="logo">
+                <img src="{{asset('images/keyarts/contact/logo_contacto.png')}}" alt="logo"/>
+            </figure>
+            <div class="contenido-contact">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, rem, dignissimos maxime laboriosam enim tempore earum atque voluptates aliquid laudantium omnis quasi eveniet dicta quisquam eum. Alias, beatae dolorem officia!
+            </div>
+        </div>
+        <div class="formulario">
+            <form action="#">
+                <div class="input-formulario">
+                    <label for="">Nombre:</label>
+                    <input type="text" value=""/>		
+                </div>
+                <div class="input-formulario">
+                    <label for="">Email:</label>
+                    <input type="text" value=""/>		
+                </div>
+                <div class="input-formulario">
+                    <label for="">Asunto:</label>
+                    <input type="text" value=""/>		
+                </div>
+                <div class="input-formulario">
+                    <label for="">Telefono:</label>
+                    <input type="text" value=""/>		
+                </div>
+                <div class="input-formulario">
+                    <label for="">Mensaje:</label>
+                    <textarea name="" id="" cols="30" rows="10">
+    					
+                    </textarea>		
+                </div>
+                <div class="input-formulario">
+                    <button>Enviar</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="logo-interactive-valley">
+        <a href="http://interactivevalley.com" target="_blank">
+            <figure><img src="{{asset('images/keyarts/contact/developed.png')}}" alt="Interactive Valley"></figure>
+        </a>
+    </div>
+</article>
+{% endblock %}
+{% block javascripts %}
+  {{parent()}}
+<script src="{{asset('js/jquery.bxslider.min.js')}}"></script>
+<script src="{{asset('js/jquery.modal2.js')}}"></script>
+<script>
+    $(document).ready(function(){
+
+        $(".item-shop").on("click", function(){
+            var $item= $(this);
+            $().dialogModalRS("/app_dev.php/producto/"+$item.data("shop"),$.cargarProducto($item.data("shop")));
+        });
+
+        $(".item-artista").click(function() {
+            debugger;
+            var $item= $(this);
+            var $contenidoAjax=$(".contenido-ajax");
+            var source = $item.data("url");
+            $contenidoAjax.empty()
+            .html('<img src="{{ asset('images/loader.gif') }}">');
+            $contenidoAjax.load(source, function() {
+                $(this).slideDown(500, function() {
+                    $('html,body').animate({scrollTop: $("#artistas").offset().top}, 'slow');
+                });
+            });
+        });
+
+
+
+        $.iniciarCircle();
+    });
+
+jQuery.cargarProducto = function($id){
+
+}
+
+jQuery.iniciarCircle=function(){
+        $('ul.tweets-lista li:first-child').slideUp("slow",function(){
+              $('ul.tweets-lista').append($(this).slideDown("fast"));
+         });
+         setTimeout(function(){
+              $.iniciarCircle();
+         },6000);
+ }
+</script>
+<script>
+    $(function() {
+    //$.scrollTo( 0 );
+    // Scroll to Function
+    function scrollingTo(id) {
+        if(id!="#twitter-feed"){
+            $('html,body').animate({scrollTop: ($(id).offset().top)}, 500, 'easeOutCubic');    
+        }else{
+            $('html,body').animate({scrollTop: ($(id).offset().top - 220)}, 500, 'easeOutCubic');
+        }
+        
+    }
+    
+    $('a[rel="scroll"]').on('click', function() {
+        var target = $(this).attr('href');
+        scrollingTo(target);
+    });
+   
+
+});
+</script>
+{% endblock %}

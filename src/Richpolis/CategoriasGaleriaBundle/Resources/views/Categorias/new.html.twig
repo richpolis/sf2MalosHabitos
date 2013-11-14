@@ -1,0 +1,48 @@
+{% extends "BackendBundle::backend.html.twig" %}
+
+{% block menu_horizontal %}
+    {% include 'BackendBundle:Default:menu_horizontal.html.twig' with {'pagina': 'galerias'} %}
+{% endblock %}
+
+{% block siderbar %}
+     {% if galeria == "Galeria Principal" %}
+        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_principal'} %}
+     {% elseif galeria == "Galeria About" %}
+        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_about'} %}
+     {% elseif galeria == "Galeria Distribuidores" %}
+        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_distribuidores'} %}
+     {% elseif galeria == "Galeria How To Mix" %}
+        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_howtomix'} %}   
+     {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ form_stylesheet(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ tinymce_init() }}
+    {{ form_javascript(form) }}
+{% endblock %}
+
+{% block body %}
+<h1>Nueva galeria </h1>
+
+<form action="{{ path('categorias_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p style="margin-top: 10px;">
+        <ul class="record_actions">
+            <li style=" list-style: none; display: inline;">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+            </li>
+            <li style=" list-style: none;  display: inline;">
+                <a class="btn" href="{{ path('categorias') }}">
+                    Regresar
+                </a>
+            </li>
+        </ul>
+    </p>
+</form>
+{% endblock %}

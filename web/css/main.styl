@@ -1,0 +1,535 @@
+transition()
+	-webkit-transition arguments
+	-moz-transition arguments
+	-ms-transition arguments
+	-o-transition arguments
+	transition arguments
+
+box-sizing()
+	-webkit-box-sizing arguments
+	-moz-box-sizing arguments
+	box-sizing arguments
+
+border-radius()
+	-webkit-border-radius arguments
+	-moz-border-radius arguments
+	-ms-border-radius arguments
+	-o-border-radius arguments
+	border-radius arguments
+
+box-shadow()
+	-webkit-box-shadow arguments
+	-moz-box-shadow arguments
+	-ms-box-shadow arguments
+	-o-box-shadow arguments
+	box-shadow arguments
+
+transform()
+	-webkit-transform arguments
+	-moz-transform arguments
+	-ms-transform arguments
+	-o-transform arguments
+	transform arguments
+
+opacity(n)
+	opacity n
+	if support-for-ie
+		filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=' + round(n * 100) + ')')
+
+article header
+	margin-top 50px
+	position relative
+	width 100%
+	& ul
+		box-sizing border-box
+		margin-top 70px
+		transform rotate(-4deg)
+		text-align right
+		width 100%
+		padding-right 20px
+		position absolute
+		top -25px
+		& li
+			display inline-block
+			vertical-align top
+			text-transform uppercase
+			margin-left 10px
+			margin-top 5px
+			font-size .8em
+			& a
+				display block
+				text-decoration none
+
+a.red-social-facebook
+a.red-social-twitter
+	display inline-block 
+	vertical-align top
+	height 35px
+	width 36px
+a.red-social-twitter
+	background url('../images/keyarts/artists/artistas_socialmedia.png') no-repeat 0px 0px
+a.red-social-facebook
+	background url('../images/keyarts/artists/artistas_socialmedia.png') no-repeat -49px 0px
+
+a.home
+	background url('../images/keyarts/home/menu.png') no-repeat 0px 0px
+	width 40px
+	height 10px
+a.home:hover
+a.home.active
+	background url('../images/keyarts/home/menu.png') no-repeat 0px -10px
+a.about
+	background url('../images/keyarts/home/menu.png') no-repeat -55px 0px
+	width 80px
+	height 10px
+a.about:hover
+a.about.active
+	background url('../images/keyarts/home/menu.png') no-repeat -55px -10px
+a.news
+	background url('../images/keyarts/home/menu.png') no-repeat -145px 0px
+	width 70px
+	height 10px
+a.news:hover
+a.news.active
+	background url('../images/keyarts/home/menu.png') no-repeat -145px -10px
+a.artistas
+	background url('../images/keyarts/home/menu.png') no-repeat -225px 0px
+	width 70px
+	height 10px
+a.artistas:hover
+a.artistas.active
+	background url('../images/keyarts/home/menu.png') no-repeat -225px -10px
+a.shop
+	background url('../images/keyarts/home/menu.png') no-repeat -305px 0px
+	width 50px
+	height 10px
+a.shop:hover
+a.shop.active
+	background url('../images/keyarts/home/menu.png') no-repeat -305px -10px
+a.contact
+	background url('../images/keyarts/home/menu.png') no-repeat -369px 0px
+	width 80px
+	height 10px
+a.contact:hover
+a.contact.active
+	background url('../images/keyarts/home/menu.png') no-repeat -369px -10px
+
+
+
+body
+	background white
+	color black
+	font-size 16px
+	font-family "Helvética", "Verdana","Arial"
+
+header.header-about
+	background url('../images/keyarts/about/seccion_acercade.png') no-repeat center center
+	height 78px
+	
+header.header-news
+	background url('../images/keyarts/news/seccion_noticias.png') no-repeat center center
+	height 139px
+
+header.header-artistas
+	background url('../images/keyarts/artists/seccion_artistas.png') no-repeat center center
+	height 139px
+header.header-shop
+	background url('../images/keyarts/shop/seccion_tienda.png') no-repeat center center
+	height 139px
+header.header-contact
+	background url('../images/keyarts/contact/seccion_contacto.png') no-repeat 0px 0px
+	height 141px
+
+ul.lista-shop
+	margin 0 auto
+	padding 0
+	width 90%
+	& li
+		display inline-block
+		vertical-align top
+		width 229px
+		margin 15px 37px 10px
+		overflow hidden
+		& h3
+			text-transform capitalize
+			font-size .9em
+			font-style italic
+			font-weight normal
+		& figure
+			background url('../images/keyarts/shop/thumb_tienda.png') no-repeat center center
+			box-sizing border-box
+			height 152px
+			width 229px
+			& img
+				margin 4px
+				height 144px
+				width 221px
+
+
+
+#about
+	& figure.logo
+	& p
+		display inline-block
+		margin-top 80px
+		vertical-align middle
+	& figure.logo 
+		width 49%
+		text-align center
+	& p
+		width 49%
+
+#container
+	border-top 5px solid black
+	border-bottom 5px solid black
+	margin 0 auto
+	width 1024px
+	& header
+		text-align center
+		position relative
+		& div.logo 
+			position absolute
+			top 0px
+			left 50%
+			margin-left -80px
+			z-index 1000
+		& nav
+			box-sizing border-box
+			text-align right
+			height 90px
+			width 100%
+			& ul 
+				margin 54px 0 0
+				padding 0
+				transform rotate(-4deg)
+				border-bottom 2px solid gray
+				width 50%
+				position absolute
+				right 0px
+				top 0px
+			& li
+				display inline-block
+				vertical-align top
+				text-transform uppercase
+				margin-left 6px
+				& a
+					text-decoration none
+					display block
+
+#news
+	position relative
+	& .ctl-news-left
+		position absolute
+		top 60%
+		left 0px
+	& .ctl-news-right
+		position absolute
+		top 60%
+		right 0px
+
+.contacto
+	margin 0 auto 100px
+	width 90%
+	& .contenido
+	& .formulario
+		display inline-block
+		vertical-align top
+		margin-top 30px
+		width 48%
+	& .contenido .logo
+		text-align center
+		margin-bottom 30px
+	& .contenido .contenido-contact
+		text-align justify
+	& .formulario form 
+		margin-left 100px
+	& .formulario .input-formulario
+		background url('../images/keyarts/contact/form_line.png') no-repeat 0px 0px
+		padding-top 24px
+		margin-bottom 10px
+		width 100%
+		& label
+		& input
+		& textarea 
+			display inline-block
+			vertical-align top
+			font-size 1em 
+			text-transform uppercase
+			font-style normal
+			padding 5px
+			border none
+		& input
+			text-transform none
+			float right
+			margin-right 45px
+		& button 
+			background none
+			border none
+			margin-right 50px
+			float right
+			text-transform uppercase
+
+.contenido-ajax
+	padding 10px 0px
+	margin 30px auto
+	width 95%
+	border-top 1px solid gray
+	border-bottom 1px solid gray
+	display none
+	& .galeria-artistas
+	& .contenido-artistas
+		display inline-block
+		vertical-align top
+	& .galeria-artistas
+		width 40%
+		margin-top 10px
+		position relative
+		& img
+			width 100%
+		& ul
+			width 
+			padding 0
+			margin 0
+		& li
+			list-style none
+		& .ctl-galeria-artistas-left
+			position absolute
+			left 0px
+			top 50%
+			margin-top -50px
+			& a
+				display block
+				background url('../images/keyarts/artists/foto_left_arrow.png') no-repeat center center
+				height 51px
+				width 37px
+				z-index 1000
+		& .ctl-galeria-artistas-right
+			position absolute
+			right 0px
+			top 50%
+			margin-top -50px
+			& a
+				display block
+				background url('../images/keyarts/artists/foto_right_arrow.png') no-repeat center center
+				height 51px
+				width 37px
+				z-index 1000
+
+	& .contenido-artistas
+		width 56%
+		margin-left 3%
+		& h3
+			text-transform uppercase
+			font-style italic
+			font-size 2em
+			margin-top 10px
+		& p
+			font-style italic
+	& .redes-sociales-artistias
+		width 100%
+		height 50px
+
+.lista-artistas
+	margin 0px auto
+	padding-left 2px
+	width 90%
+	& ul 
+		margin 0px
+		padding 0px
+	& li
+		display inline-block
+		height 213px
+		margin 10px 9px
+		vertical-align top
+		width 284px
+		& figure 
+			position relative
+			height 213px
+			width 284px
+		& img
+			width 100%
+			height 100%
+		& figcaption
+			background url('../images/keyarts/artists/thumb_artistas_normal.png') no-repeat center center
+			color transparent
+			height 100%
+			left 0px
+			top 0px
+			transition all .5s ease-in
+			position absolute
+			width 100%
+			z-index 1000
+			& span
+				margin 20px
+				display block
+		& figcaption:hover
+			background url('../images/keyarts/artists/thumb_artistas_over.png') no-repeat center center
+			color white
+		
+	
+
+.knp_last_tweets
+	margin 120px auto 100px auto
+	text-align center
+	width 80%
+	height 300px
+	overflow hidden
+	& ul
+		margin 0
+		padding 0
+		& li
+			border-bottom  1px solid black
+			list-style none
+			width 100%
+			height 100px
+			box-sizing border-box 
+			padding-top 10px
+			padding-bottom 10px
+			& div.tweet-item-imagen
+			& div.tweet-item-contenido
+				display inline-block
+				vertical-align middle
+			& span.tweet-item-tiempo
+				display block
+				text-align right
+			& div.tweet-item-contenido
+				width 90%
+				text-align left
+				margin-top 5px
+			& div.tweet-item-imagen
+				padding-top 15px
+.noticias
+	padding 0
+	margin 50px auto
+	width 90%
+	& li
+		list-style none
+		margin-top 20px
+	& div.titulo-noticia
+		border-bottom 1px solid black
+		margin 10px 0px
+		position relative
+		width 100%
+		font-size 2em
+		text-transform uppercase
+		font-style italic
+		font-weight bold
+		& span 
+			position absolute
+			right 0px
+			font-size .7em
+			color gray
+			text-transform capitalize
+			font-style normal
+			font-weight normal
+
+	& figure.imagen-noticia
+	& p
+	& div.imagenes-noticia
+		display inline-block
+		vertical-align top
+	& figure.imagen-noticia
+		border 3px solid white
+		box-sizing border-box 
+		box-shadow 0px 0px 2px gray
+		width 228px
+		& img 
+			width 100%
+	& p
+		box-sizing border-box
+		width 612px
+		padding 0px 20px
+		font-size .8em
+		text-align justify
+	& div.imagenes-noticia 
+		width 50px
+		vertical-align top
+
+
+.categorias-shop
+	border-top 1px solid gray
+	border-bottom 1px solid gray
+	color gray
+	font-style italic
+	font-weight bold
+	margin 30px auto
+	text-align center
+	text-transform uppercase
+	width 90%
+	& a.categoria-shop
+		color gray
+		display inline-block
+		margin 10px 0px
+		transition color .5s ease
+		text-decoration none
+		vertical-align top
+	& a.categoria-shop:hover
+	& a.categoria-shop.active
+		color black
+	& a.categoria-shop:first-child
+		margin-right 20px
+
+#contact
+	position relative
+	& .logo-interactive-valley
+		bottom -94px
+		height 21px
+		right 0px
+		position absolute
+		width 160px
+
+.item-shop
+.item-artista
+	cursor pointer
+
+.contenido-producto
+	width 400px
+	margin 0 auto
+	& h3
+		font-style italic
+	& hr
+		color transparent
+	& .contenedor-galeria-producto
+		position relative
+	& ul.galeria-producto
+		margin 0 
+		padding 0
+	& .ctl-galeria-producto-left
+		position absolute
+		left -50px
+		top 50%
+		margin-top -23px
+		& a
+			background url('../images/keyarts/shop/left_arrowwhite.png') no-repeat center center
+			height 46px
+			display block
+			width 32px
+			z-index 2000
+	& .ctl-galeria-producto-right
+		position absolute
+		right -50px
+		top 50%
+		margin-top -23px
+		& a
+			background url('../images/keyarts/shop/right_arrowwhite.png') no-repeat center center
+			height 46px
+			display block
+			width 32px
+			z-index 2000
+	& p
+		font-size .8em
+		font-style italic
+	& input
+		font-size .8em
+		font-weight bold
+		width 200px
+		border none
+		padding 5px
+	& .input-form-producto
+		margin-top 10px
+	& button
+		float right
+		margin-right 200px
+		background none
+		border none
+		color white
