@@ -1,15 +1,22 @@
 {% extends "BackendBundle::backend.html.twig" %}
 
 {% block menu_horizontal %}
-    {% include 'BackendBundle:Default:menu_horizontal.html.twig' with {'pagina': 'publicacion'} %}
+    {% include 'BackendBundle:Default:menu_horizontal.html.twig' with {'pagina': 'publicaciones'} %}
 {% endblock %}
 
 {% block siderbar %}  
-    {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': entity.categoria.slug} %}
+    {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': entity.categoria.stringtipocategoria} %}
 {% endblock %}    
 
 {% block body %}
+{% if entity.categoria.stringtipocategoria == "Noticias"%}
 <h1>Publicacion "{{ entity.titulo }}"</h1>
+{% elseif entity.categoria.stringtipocategoria == "Artistas" %}
+<h1>Artista "{{ entity.titulo }}"</h1>
+{% else %}
+<h1>Producto "{{ entity.titulo }}"</h1>
+{% endif %}
+
 
 <table class="record_properties table table-bordered">
     <tbody>
@@ -17,38 +24,21 @@
             <th>Id</th>
             <td>{{ entity.id }}</td>
         </tr>
-        <tr>
-            <th>Titulo</th>
-            <td>{{ entity.titulo }}</td>
-        </tr>
+        {% if entity.categoria.stringtipocategoria == "Noticias"%}
+        <tr><th>Titulo</th><td>{{ entity.titulo }}</td></tr>
+        {% elseif entity.categoria.stringtipocategoria == "Artistas" %}
+        <tr><th>Artista</th><td>{{ entity.titulo }}</td></tr>
+        {% else %}
+        <tr><th>Producto</th><td>{{ entity.titulo }}</td></tr>
+        {% endif %}
         <tr>
             <th>Descripcion</th>
-            <td>{{ entity.descripcionCorta | raw }}</td>
+            <td>{{ entity.descripcion | raw }}</td>
         </tr>
-        <tr>
-            <th>Cliente</th>
-            <td>{{ entity.cliente }}</td>
-        </tr>
-        <tr>
-            <th>Descripcion Cliente</th>
-            <td>{{ entity.descripcionCliente | raw }}</td>
-        </tr>
-        <tr>
-            <th>Fecha</th>
-            <td>{{ entity.fecha | date('Y-m-d') }}</td>
-        </tr>
-        <tr>
-            <th>Descripcion Fecha</th>
-            <td>{{ entity.descripcionFecha | raw }}</td>
-        </tr>
-        <tr>
-            <th>Localizacion</th>
-            <td>{{ entity.location }}</td>
-        </tr>
-        <tr>
-            <th>Descripcion localizacion</th>
-            <td>{{ entity.descripcionLocation | raw }}</td>
-        </tr>
+        {% if entity.categoria.stringtipocategoria == "Artistas" %}
+        <tr><th>Twitter</th><td>{{ entity.twitter }}</td></tr>
+        <tr><th>Facebook</th><td>{{ entity.facebook }}</td></tr>
+        {% endif %}
         <tr>
             <th>Posicion</th>
             <td>{{ entity.posicion }}</td>

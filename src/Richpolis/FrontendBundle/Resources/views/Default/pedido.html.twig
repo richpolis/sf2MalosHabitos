@@ -1,0 +1,41 @@
+{% if error is not defined %}
+    {% set error = 0 %}
+    {% set ok = 0 %}
+    {% set mensaje = "" %}
+{% endif %}
+
+<form onsubmit="return false;" action="{{path('frontend_pedido')}}"  method="post" class="form-pedido-producto">
+    <div class="input-form-producto">
+                {{ form_errors(form.name) }}
+                {{ form_widget(form.name, {'attr': {'placeholder': 'Nombre*'}}) }}
+    </div>
+    <div class="input-form-producto">
+                {{ form_errors(form.email) }}
+                {{ form_widget(form.email, {'attr': {'placeholder': 'Email*'}}) }}
+    </div>
+    <div class="input-form-producto">
+                {{ form_errors(form.telefono) }}
+                {{ form_widget(form.telefono, {'attr': {'placeholder': 'Telefono'}}) }}
+    </div>
+    <div class="input-form-producto">
+        <button id="enviar-form-producto" onclick="javascript:enviarPedido();">Enviar</button>
+    </div>
+            {{form_errors(form)}}
+            {{ form_rest(form) }} 
+</form>
+        {% if error %}
+<div class="mensaje-formulario error-formulario">
+            {{mensaje}}
+</div>
+        {% endif %}
+        {% if ok %}
+<div class="mensaje-formulario ok-formulario">
+            {{mensaje}}
+</div>
+        {% endif %}
+<script>
+setTimeout(function(){
+    mensajeFormulario();
+},4000);
+    
+</script>    

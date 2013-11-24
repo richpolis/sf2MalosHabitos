@@ -1,7 +1,7 @@
-publicaciones:
-    resource: "@PublicacionesBundle/Controller/"
-    type:     annotation
-    prefix:   /
+#publicaciones:
+#    resource: "@PublicacionesBundle/Controller/"
+#    type:     annotation
+#    prefix:   /
 
 categorias_galeria:
     resource: "@CategoriasGaleriaBundle/Controller/"

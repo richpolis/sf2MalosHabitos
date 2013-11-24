@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Richpolis\CategoriasGaleriaBundle\Entity\Categorias;
 use Richpolis\CategoriasGaleriaBundle\Form\CategoriasType;
+use Richpolis\CategoriasGaleriaBundle\Form\CategoriasArtistasType;
+use Richpolis\CategoriasGaleriaBundle\Form\CategoriasProductosType;
 
 
 /**
@@ -38,10 +40,15 @@ class CategoriasController extends Controller
         $filters = $this->getFilters();
 
         if(!isset($filters['categorias']))
-            $filters['categorias']=Categorias::$GALERIA_PRINCIPAL;
+            $filters['categorias']=Categorias::$GALERIA_NOTICIAS;
+        
+        /*$query = $em->getRepository('CategoriasGaleriaBundle:Categorias')
+                            ->getQueryCategoriasPorTipoYActivas($filters['categorias'],false);*/
         
         $query = $em->getRepository('CategoriasGaleriaBundle:Categorias')
-                            ->getQueryCategoriasPorTipoYActivas($filters['categorias'],true);
+                            ->getQueryCategoriasGaleriaActivas($filters['categorias'],false);
+        
+        
         
         $paginator = $this->get('knp_paginator');
         
@@ -161,20 +168,53 @@ class CategoriasController extends Controller
         );
     }
     
-    public function galeriasPrincipalAction(){
+    /**
+     * Mostrar categorias tipo noticias.
+     *
+     * @Route("/noticias", name="categorias_tipo_noticias")
+     */
+    public function galeriasNoticiasAction(){
         return $this->forward(
                 'CategoriasGaleriaBundle:Categorias:showCategoria', 
-                array('tipo'=>  Categorias::$GALERIA_PRINCIPAL)
+                array('tipo'=>  Categorias::$GALERIA_NOTICIAS)
                 );
     }
     
-    public function galeriasProyectoAction(){
+    /**
+     * Mostrar categorias tipo artistas.
+     *
+     * @Route("/artistas", name="categorias_tipo_artistas")
+     */
+    public function galeriasArtistasAction(){
         return $this->forward(
                 'CategoriasGaleriaBundle:Categorias:showCategoria', 
-                array('tipo'=>  Categorias::$GALERIA_PROYECTOS)
+                array('tipo'=>  Categorias::$GALERIA_ARTISTAS)
                 );
     }
     
+    /**
+     * Mostrar categorias tipo productos discos.
+     *
+     * @Route("/productos/discos", name="categorias_tipo_productos_discos")
+     */
+    public function galeriasProductosDiscosAction(){
+        return $this->forward(
+                'CategoriasGaleriaBundle:Categorias:showCategoria', 
+                array('tipo'=>  Categorias::$GALERIA_PRODUCTOS_DISCOS)
+                );
+    }
+    
+    /**
+     * Mostrar categorias tipo productos ropa.
+     *
+     * @Route("/productos/ropa", name="categorias_tipo_productos_ropa")
+     */
+    public function galeriasProductosRopaAction(){
+        return $this->forward(
+                'CategoriasGaleriaBundle:Categorias:showCategoria', 
+                array('tipo'=>  Categorias::$GALERIA_PRODUCTOS_ROPA)
+                );
+    }
 
     /**
      * Displays a form to create a new Categorias entity.
@@ -187,7 +227,7 @@ class CategoriasController extends Controller
         $request=$this->getRequest();
         $tipo=$request->query->get('tipo',0);
         $entity = new Categorias();
-        $max=$this->getDoctrine()->getRepository('CategoriasGaleriaBundle:Categorias')->getMaxPosicion();
+        $max=$this->getDoctrine()->getRepository('CategoriasGaleriaBundle:Categorias')->getMaxPosicion($tipo);
         
         if(!is_null($max)){
             $entity->setPosicion($max+1);
@@ -199,7 +239,8 @@ class CategoriasController extends Controller
             $entity->setTipoCategoria($tipo);
         }
         
-        $form   = $this->createForm(new CategoriasType(), $entity);
+        //$form   = $this->createForm(new CategoriasType(), $entity);
+        $form = $this->createFormEspecializado($entity);
 
         return array(
             'entity' => $entity,
@@ -218,7 +259,9 @@ class CategoriasController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Categorias();
-        $form = $this->createForm(new CategoriasType(), $entity);
+        $filters = $this->getFilters();
+        $entity->setTipoCategoria($filters['categorias']);
+        $form = $this->createFormEspecializado($entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -252,7 +295,8 @@ class CategoriasController extends Controller
             throw $this->createNotFoundException('Unable to find Categorias entity.');
         }
 
-        $editForm = $this->createForm(new CategoriasType(), $entity);
+        //$editForm = $this->createForm(new CategoriasType(), $entity);
+        $editForm = $this->createFormEspecializado($entity);
         $deleteForm = $this->createDeleteForm($id);
         
         
@@ -282,10 +326,18 @@ class CategoriasController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new CategoriasType(), $entity);
+        //$editForm = $this->createForm(new CategoriasType(), $entity);
+        $editForm = $this->createFormEspecializado($entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
+            $imagen = $em->getRepository('CategoriasGaleriaBundle:Galerias')->findOneBy(
+                    array('categoria'=>$entity->getId()),
+                    array('posicion' => 'ASC')
+                    );
+            if($imagen != null){
+                $entity->setPortada($imagen->getThumbnailWebPath());
+            }
             $em->persist($entity);
             $em->flush();
 
@@ -374,13 +426,22 @@ class CategoriasController extends Controller
                 if($registro->getPosicion()!=($order+1)){
                     try{
                         $registro->setPosicion($order+1);
-                        $em->flush();
+                        $em->persist($registro);
                     }catch(Exception $e){
                         $result['ok']=$e->getMessage();
                     }    
                 }
             }
-            
+            $em->flush();
+            $imagen = $em->getRepository('CategoriasGaleriaBundle:Galerias')->findOneBy(
+                    array('categoria'=>$categoria->getId()),
+                    array('posicion' => 'ASC')
+                    );
+            if($imagen != null){
+                $categoria->setPortada($imagen->getThumbnailWebPath());
+                $em->persist($categoria);
+                $em->flush();
+            }
             $response = new Response(json_encode($result));
             $response->headers->set('Content-Type', 'application/json');
             return $response;
@@ -402,7 +463,7 @@ class CategoriasController extends Controller
         $registroUp = $em->getRepository('CategoriasGaleriaBundle:Categorias')->find($id);
         
         if ($registroUp) {
-            $registroDown=$em->getRepository('CategoriasGaleriaBundle:Categorias')->getRegistroUpOrDown($registroUp->getPosicion(),true);
+            $registroDown=$em->getRepository('CategoriasGaleriaBundle:Categorias')->getRegistroUpOrDown($registroUp,true);
             if ($registroDown) {
                 $posicion=$registroUp->getPosicion();
                 $registroUp->setPosicion($registroDown->getPosicion());
@@ -428,7 +489,7 @@ class CategoriasController extends Controller
         $registroDown = $em->getRepository('CategoriasGaleriaBundle:Categorias')->find($id);
         
         if ($registroDown) {
-            $registroUp=$em->getRepository('CategoriasGaleriaBundle:Categorias')->getRegistroUpOrDown($registroDown->getPosicion(),false);
+            $registroUp=$em->getRepository('CategoriasGaleriaBundle:Categorias')->getRegistroUpOrDown($registroDown,false);
             if ($registroUp) {
                 $posicion=$registroUp->getPosicion();
                 $registroUp->setPosicion($registroDown->getPosicion());
@@ -440,6 +501,22 @@ class CategoriasController extends Controller
         return $this->redirect($this->generateUrl('categorias',array(
             'page'=>$this->getRequest()->query->get('page', 1)
         )));
+    }
+    
+    private function createFormEspecializado($entity)
+    {
+        switch($entity->getTipoCategoria())
+        {
+            case Categorias::$GALERIA_NOTICIAS:
+                return $this->createForm(new CategoriasType(), $entity);
+            case Categorias::$GALERIA_ARTISTAS:
+                return $this->createForm(new CategoriasArtistasType(), $entity);
+            case Categorias::$GALERIA_PRODUCTOS_DISCOS:
+            case Categorias::$GALERIA_PRODUCTOS_ROPA:
+                return $this->createForm(new CategoriasProductosType(), $entity);
+            default:
+                return $this->createForm(new CategoriasType(), $entity);    
+        }
     }
 }
 

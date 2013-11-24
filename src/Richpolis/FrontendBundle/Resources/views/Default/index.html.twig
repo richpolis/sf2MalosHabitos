@@ -2,227 +2,323 @@
 
 {% block stylesheets %}
  {{parent()}}
- <link rel="stylesheet" href="{{asset('css/jquery.bxslider.css')}}"/>
- <link rel="stylesheet" href="{{asset('css/jquery.modal.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/jquery.bxslider.css')}}"/>
+<link rel="stylesheet" href="{{asset('css/jquery.modal.css')}}"/>
+<style>
+        #followingBallsG{
+            position:relative;
+            width:256px;
+            height:20px;
+            
+        }
+
+        .followingBallsG{
+            background-color:#8A8A8A;
+            position:absolute;
+            top:0;
+            left:0;
+            width:20px;
+            height:20px;
+            -moz-border-radius:10px;
+            -moz-animation-name:bounce_followingBallsG;
+            -moz-animation-duration:1.7s;
+            -moz-animation-iteration-count:infinite;
+            -moz-animation-direction:linear;
+            -webkit-border-radius:10px;
+            -webkit-animation-name:bounce_followingBallsG;
+            -webkit-animation-duration:1.7s;
+            -webkit-animation-iteration-count:infinite;
+            -webkit-animation-direction:linear;
+            -ms-border-radius:10px;
+            -ms-animation-name:bounce_followingBallsG;
+            -ms-animation-duration:1.7s;
+            -ms-animation-iteration-count:infinite;
+            -ms-animation-direction:linear;
+            -o-border-radius:10px;
+            -o-animation-name:bounce_followingBallsG;
+            -o-animation-duration:1.7s;
+            -o-animation-iteration-count:infinite;
+            -o-animation-direction:linear;
+            border-radius:10px;
+            animation-name:bounce_followingBallsG;
+            animation-duration:1.7s;
+            animation-iteration-count:infinite;
+            animation-direction:linear;
+        }
+
+        #followingBallsG_1{
+            -moz-animation-delay:0s;
+        }
+
+        #followingBallsG_1{
+            -webkit-animation-delay:0s;
+        }
+
+        #followingBallsG_1{
+            -ms-animation-delay:0s;
+        }
+
+        #followingBallsG_1{
+            -o-animation-delay:0s;
+        }
+
+        #followingBallsG_1{
+            animation-delay:0s;
+        }
+
+        #followingBallsG_2{
+            -moz-animation-delay:0.17s;
+            -webkit-animation-delay:0.17s;
+            -ms-animation-delay:0.17s;
+            -o-animation-delay:0.17s;
+            animation-delay:0.17s;
+        }
+
+        #followingBallsG_3{
+            -moz-animation-delay:0.34s;
+            -webkit-animation-delay:0.34s;
+            -ms-animation-delay:0.34s;
+            -o-animation-delay:0.34s;
+            animation-delay:0.34s;
+        }
+
+        #followingBallsG_4{
+            -moz-animation-delay:0.51s;
+            -webkit-animation-delay:0.51s;
+            -ms-animation-delay:0.51s;
+            -o-animation-delay:0.51s;
+            animation-delay:0.51s;
+        }
+
+        @-moz-keyframes bounce_followingBallsG{
+            0%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+            50%{
+                left:236px;
+                background-color:#FFFFFF;
+            }
+
+            100%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+        }
+
+        @-webkit-keyframes bounce_followingBallsG{
+            0%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+            50%{
+                left:236px;
+                background-color:#FFFFFF;
+            }
+
+            100%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+        }
+
+        @-ms-keyframes bounce_followingBallsG{
+            0%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+            50%{
+                left:236px;
+                background-color:#FFFFFF;
+            }
+
+            100%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+        }
+
+        @-o-keyframes bounce_followingBallsG{
+            0%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+            50%{
+                left:236px;
+                background-color:#FFFFFF;
+            }
+
+            100%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+        }
+
+        @keyframes bounce_followingBallsG{
+            0%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+            50%{
+                left:236px;
+                background-color:#FFFFFF;
+            }
+
+            100%{
+                left:0px;
+                background-color:#8A8A8A;
+            }
+
+        }
+
+    </style>
+
 {% endblock %}
 
 {% block body %}
-<article id="twitter-feed">
-     {% render(controller("FrontendBundle:Default:lastTweets",{'username': 'richpolis'})) %}               
-</article>
-<article id="about">
-    <header class="header-about">
-        <ul>
-            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
-            <li><a href="#about" class="about active" rel="scroll">&nbsp;</a></li>
-            <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
-            <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
-            <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
-            <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
-        </ul>
-    </header>
-    <figure class="logo">
-        <img src="{{asset('images/keyarts/about/logo.png')}}" alt="">
-    </figure>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, corporis maxime quasi deserunt hic praesentium sit. Ipsa, quia, unde, veniam, quidem optio corrupti voluptatem ex eligendi dolorum nisi excepturi repellat.
-
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, quas, officiis dicta quidem atque aperiam accusantium illum similique facilis perferendis eos ullam officia minima possimus laudantium sapiente delectus. Expedita, iste.
-    </p>	
-</article>
-<article id="news">
-    <header class="header-news">
-        <ul>
-            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
-            <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
-            <li><a href="#news" class="news active" rel="scroll">&nbsp;</a></li>
-            <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
-            <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
-            <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
-        </ul>
-    </header>
-    <div class="ctl-news-left">
-        <img src="{{asset('images/keyarts/news/left_arrow.png')}}" alt="left"/>
-    </div>
-    <ul class="noticias">
-		{% for noticia in range(1,3) %}
-        <li class="noticia">
-            <div class="titulo-noticia">
-                Titulo de la noticia 
-                <span>
-                    fecha de la noticia	
-                </span>
-            </div>
-            <figure class="imagen-noticia">
-                <img src="{{asset('images/demo/M16-Eagle-Nebula.jpeg')}}" alt="titulo de la imagen">
-            </figure>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, odio quae dolorem laudantium officiis dignissimos optio qui aliquam repudiandae earum cupiditate provident rem nesciunt ab a quibusdam soluta error nulla.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, nemo, dicta, iusto, quam officiis et excepturi culpa in magni reprehenderit inventore voluptatum consequuntur voluptates expedita incidunt deserunt atque ad quae.
-            </p>
-            <div class="imagenes-noticia">
-                <div class="boton-mas">
-                    <img src="{{asset('images/keyarts/news/mas.png')}}" alt="más"/>	
-                </div>
-            </div>
-        </li>
-		{% endfor %}
-    </ul>
-    <div class="ctl-news-right">
-        <img src="{{asset('images/keyarts/news/right_arrow.png')}}" alt="right"/>
-    </div>
-</article>
-<article id="artistas">
-    <header class="header-artistas">
-        <ul>
-            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
-            <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
-            <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
-            <li><a href="#artistas" class="artistas active" rel="scroll">&nbsp;</a></li>
-            <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
-            <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
-        </ul>
-    </header>
-    <div class="contenido-ajax">
-        
-    </div>
-    <div class="lista-artistas">
-        <ul>
-        {% for registro in range(1,6) %}
-            <li class="item-artista" data-artista="{{registro}}" data-url="{{url('show_artista',{'id':registro})}}">
-                <figure>
-                    <img src="{{asset('images/keyarts/artists/thumb_artistas_tamano.png')}}" alt="imagen">
-                    <figcaption>
-                        <span>Nombre Artista {{registro}}</span>
-                    </figcaption>
-                </figure>
-            </li>
-	{% endfor %}
-        </ul>
-    </div>
-</article>
-<article id="shop">
-    <header class="header-shop">
-        <ul>
-            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
-            <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
-            <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
-            <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
-            <li><a href="#shop" class="shop active" rel="scroll">&nbsp;</a></li>
-            <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
-        </ul>
-    </header>
-    <div class="categorias-shop">
-        <a href="#" class="categoria-shop">
-            Ropa
-        </a>
-        <a href="#" class="categoria-shop active">
-            Discos
-        </a>
-    </div>
-    <ul class="lista-shop">
-        {% for registro in range(1,9) %}
-        <li>
-            <h3>Numero del registro {{registro}}</h3>
-            <figure  class="item-shop" data-shop="{{registro}}">
-                <img src="{{asset('images/demo/18465_nebula_horsehead_nebula.jpg')}}" alt="Registro {{registro}}"/>
-            </figure>
-        </li>
-        {% endfor %}
-    </ul>
-</article>
-<article id="contact">
-    <header class="header-contact">
-        <ul>
-            <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
-            <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
-            <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
-            <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
-            <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
-            <li><a href="#contact" class="contact active" rel="scroll">&nbsp;</a></li>
-        </ul>
-    </header>
-    <div class="contacto">
-        <div class="contenido">
+    <article id="twitter-feed">
+     {% render(controller("FrontendBundle:Default:lastTweets",{'username': 'maloshbitos'})) %}
+            <div class="redes-sociales-twitter-feed">
+                <a href="https://twitter.com/maloshbitos" class="red-social-twitter" target="_blank"></a>
+                <a href="https://www.facebook.com/maloshabitosdiscos" class="red-social-facebook" target="_blank"></a>
+            </div>               
+        </article>
+        <article id="about">
+            <header class="header-about">
+                <ul class="menu-about menu-seccion">
+                    <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#about" class="about active" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
+                </ul>
+            </header>
             <figure class="logo">
-                <img src="{{asset('images/keyarts/contact/logo_contacto.png')}}" alt="logo"/>
+                <img src="{{asset('images/keyarts/about/logo.png')}}" alt="">
             </figure>
-            <div class="contenido-contact">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, rem, dignissimos maxime laboriosam enim tempore earum atque voluptates aliquid laudantium omnis quasi eveniet dicta quisquam eum. Alias, beatae dolorem officia!
-            </div>
-        </div>
-        <div class="formulario">
-            <form action="#">
-                <div class="input-formulario">
-                    <label for="">Nombre:</label>
-                    <input type="text" value=""/>		
-                </div>
-                <div class="input-formulario">
-                    <label for="">Email:</label>
-                    <input type="text" value=""/>		
-                </div>
-                <div class="input-formulario">
-                    <label for="">Asunto:</label>
-                    <input type="text" value=""/>		
-                </div>
-                <div class="input-formulario">
-                    <label for="">Telefono:</label>
-                    <input type="text" value=""/>		
-                </div>
-                <div class="input-formulario">
-                    <label for="">Mensaje:</label>
-                    <textarea name="" id="" cols="30" rows="10">
-    					
-                    </textarea>		
-                </div>
-                <div class="input-formulario">
-                    <button>Enviar</button>
-                </div>
+    {{ about.texto | raw }}	
+        </article>
+        <article id="news">
+            <header class="header-news">
+                <ul class="menu-news menu-seccion">
+                    <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#news" class="news active" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
+                    <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
+                </ul>
+            </header>
+            <div class="contenido-news">
+        {# render(controller("FrontendBundle:Default:noticias")) #}
 
-            </form>
-        </div>
-    </div>
-    <div class="logo-interactive-valley">
-        <a href="http://interactivevalley.com" target="_blank">
-            <figure><img src="{{asset('images/keyarts/contact/developed.png')}}" alt="Interactive Valley"></figure>
-        </a>
-    </div>
-</article>
+                </div>
+            </article>
+            <article id="artistas">
+                <header class="header-artistas">
+                    <ul class="menu-artistas menu-seccion">
+                        <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#artistas" class="artistas active" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
+                    </ul>
+                </header>
+                <div class="contenido-ajax">
+
+                </div>
+                <div class="lista-artistas">
+                </div>
+            </article>
+            <article id="shop">
+                <header class="header-shop">
+                    <ul class="menu-shop menu-seccion">
+                        <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#shop" class="shop active" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#contact" class="contact" rel="scroll">&nbsp;</a></li>
+                    </ul>
+                </header>
+                <div class="categorias-shop">
+                    <a href="#shop" onclick="javascript:paginaProductos('ropa', 1);" class="categoria-shop categoria-shop-ropa">
+                        Ropa
+                    </a>
+                    <a href="#shop" onclick="javascript:paginaProductos('discos', 1);" class="categoria-shop categoria-shop-discos active">
+                        Discos
+                    </a>
+                </div>
+                <div class="contenido-shop">
+                    <div class="loader"></div>
+                </div>    
+            </article>
+            <article id="contact">
+                <header class="header-contact">
+                    <ul class="menu-contact menu-seccion">
+                        <li><a href="#twitter-feed" class="home" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#about" class="about" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#news" class="news" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#artistas" class="artistas" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#shop" class="shop" rel="scroll">&nbsp;</a></li>
+                        <li><a href="#contact" class="contact active" rel="scroll">&nbsp;</a></li>
+                    </ul>
+                </header>
+                <div class="contacto">
+                    <div class="contenido">
+                        <figure class="logo">
+                            <img src="{{asset('images/keyarts/contact/logo_contacto.png')}}" alt="logo"/>
+                        </figure>
+                        <div class="contenido-contact">
+               {{contacto.texto | raw }}
+                            </div>
+                        </div>
+                        <div class="formulario">
+            {% include 'FrontendBundle:Default:contacto.html.twig' with {'form': form} %}
+                            </div>
+                        </div>
+                        <div class="logo-interactive-valley">
+                            <a href="http://interactivevalley.com" target="_blank">
+                                <figure><img src="{{asset('images/keyarts/contact/developed.png')}}" alt="Interactive Valley"></figure>
+                            </a>
+                        </div>
+                    </article>
+<a title="" id="toTo_button" style="display: none;">
+    <img src="{{asset('images/up.png')}}" alt="">
+</a>
 {% endblock %}
 {% block javascripts %}
   {{parent()}}
 <script src="{{asset('js/jquery.bxslider.min.js')}}"></script>
 <script src="{{asset('js/jquery.modal2.js')}}"></script>
+<script src="{{asset('js/sfrichpolis.js')}}"></script>
 <script>
     $(document).ready(function(){
-
-        $(".item-shop").on("click", function(){
-            var $item= $(this);
-            $().dialogModalRS("/app_dev.php/producto/"+$item.data("shop"),$.cargarProducto($item.data("shop")));
-        });
-
-        $(".item-artista").click(function() {
-            debugger;
-            var $item= $(this);
-            var $contenidoAjax=$(".contenido-ajax");
-            var source = $item.data("url");
-            $contenidoAjax.empty()
-            .html('<img src="{{ asset('images/loader.gif') }}">');
-            $contenidoAjax.load(source, function() {
-                $(this).slideDown(500, function() {
-                    $('html,body').animate({scrollTop: $("#artistas").offset().top}, 'slow');
-                });
-            });
-        });
-
-
-
+        $.configPrettyPhoto();
+        
+        setTimeout(function(){
+            paginaNoticias(1);
+        },200);
+        setTimeout(function(){
+            paginaArtistas();
+        },400);
+        setTimeout(function(){
+            paginaProductos("discos",1);
+        },600);
+        
         $.iniciarCircle();
     });
-
-jQuery.cargarProducto = function($id){
-
-}
 
 jQuery.iniciarCircle=function(){
         $('ul.tweets-lista li:first-child').slideUp("slow",function(){
@@ -235,6 +331,8 @@ jQuery.iniciarCircle=function(){
 </script>
 <script>
     $(function() {
+     var $menuSeccion=$(".menu-seccion");
+        
     //$.scrollTo( 0 );
     // Scroll to Function
     function scrollingTo(id) {
@@ -249,7 +347,22 @@ jQuery.iniciarCircle=function(){
     $('a[rel="scroll"]').on('click', function() {
         var target = $(this).attr('href');
         scrollingTo(target);
+        $menuSeccion.animate({'opacity':0},200,function(){
+            var menu = ".menu-" + target.replace("#","");
+            $(menu).animate({'opacity':1},"slow");
+        });
     });
+   
+   var hash = $(location).attr('hash');
+   if(hash.length){
+       setTimeout(function(){
+            scrollingTo(hash);
+            $menuSeccion.animate({'opacity':0},800,function(){
+                var menu = ".menu-" + hash.replace("#","");
+                $(menu).animate({'opacity':1},"slow");
+            });
+       },200);
+   }
    
 
 });

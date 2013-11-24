@@ -2,7 +2,7 @@ parameters:
     database_driver: pdo_mysql
     database_host: localhost
     database_port: '3306'
-    database_name: interactivevalley
+    database_name: maloshabitos
     database_user: root
     database_password: root
     mailer_transport: smtp
@@ -10,5 +10,5 @@ parameters:
     mailer_user: null
     mailer_password: null
     locale: en
-    secret: f155fd48c8ee2f40e8cc2884ca6f9d910
+    secret: c792aaef338204910b7cebab2c848210710
     database_path: null

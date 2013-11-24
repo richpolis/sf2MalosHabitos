@@ -295,7 +295,17 @@ class GaleriasController extends Controller
            $registro->crearThumbnail();
            $em->flush();
         }
-                    
+        
+        $imagen = $em->getRepository('CategoriasGaleriaBundle:Galerias')->findOneBy(
+                    array('categoria'=>$categoria->getId()),
+                    array('posicion' => 'ASC')
+                    );
+        if($imagen != null){
+            $categoria->setPortada($imagen->getThumbnailWebPath());
+            $em->persist($categoria);
+            $em->flush();
+        }
+        
         // create a JSON-response with a 200 status code
         $response = new Response(json_encode($result));
         $response->headers->set('Content-Type', 'application/json');

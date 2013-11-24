@@ -93,17 +93,23 @@ class CategoriasPublicacion
      */
     protected $publicaciones;
     
-    static public $PROYECTOS=1;
+    static public $NOTICIAS=1;
+    static public $ARTISTAS=2;
+    static public $PRODUCTOS_ROPA=3;
+    static public $PRODUCTOS_DISCOS=4;
     
     
     static private $sCategorias=array(
-        1=>'Proyectos',
+        1=>'Noticias',
+        2=>'Artistas',
+        3=>'Productos: ropa',
+        4=>'Productos: discos',
     );
     
     public function __construct() {
         $this->isActive = true;
         $this->isCategoria = true;
-        $this->tipoCategoria=self::$PROYECTOS;
+        $this->tipoCategoria=self::$NOTICIAS;
         $this->publicaciones =new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -116,7 +122,7 @@ class CategoriasPublicacion
     }
 
     static function getPreferedTipoCategoria(){
-        return array(self::$ABOUT);
+        return array(self::$NOTICIAS);
     }
 
     public function __toString()

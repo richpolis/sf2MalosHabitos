@@ -8,7 +8,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Richpolis\PublicacionesBundle\Entity\Publicacion;
-use Richpolis\PublicacionesBundle\Form\PublicacionType; 
+use Richpolis\PublicacionesBundle\Form\PublicacionType;
+use Richpolis\PublicacionesBundle\Form\PublicacionProductosType;
+use Richpolis\PublicacionesBundle\Form\PublicacionArtistasType;
 use Richpolis\PublicacionesBundle\Entity\CategoriasPublicacion;
 use Richpolis\PublicacionesBundle\Entity\PublicacionGalerias;
 use Richpolis\CategoriasGaleriaBundle\Entity\Categorias;
@@ -150,7 +152,7 @@ class PublicacionController extends Controller
         }
         
         $galeria = $em->getRepository('PublicacionesBundle:PublicacionGalerias')
-                      ->findOneBy(array('proyecto'=>$entity->getId()));  
+                      ->findOneBy(array('publicacion'=>$entity->getId()));  
 
         $deleteForm = $this->createDeleteForm($id);
 
@@ -161,11 +163,51 @@ class PublicacionController extends Controller
         );
     }
 
-    public function publicacionesProyectoAction(){
+    public function publicacionesNoticiasAction(){
         $em = $this->getDoctrine()->getManager();
         $filters = $this->getFilters();
         $categoria = $em->getRepository('PublicacionesBundle:CategoriasPublicacion')
-                        ->findOneBySlug('proyectos');
+                        ->findOneBySlug('noticias');
+        if($categoria==null){
+            $categoria=$this->getCategoriaDefault();
+        }                
+        $filters['publicaciones']=$categoria->getId();
+        $this->get('session')->set('filters',$filters);
+        return $this->redirect($this->generateUrl('publicacion'));
+    }
+    
+    
+    public function publicacionesArtistasAction(){
+        $em = $this->getDoctrine()->getManager();
+        $filters = $this->getFilters();
+        $categoria = $em->getRepository('PublicacionesBundle:CategoriasPublicacion')
+                        ->findOneBySlug('artistas');
+        if($categoria==null){
+            $categoria=$this->getCategoriaDefault();
+        }                
+        $filters['publicaciones']=$categoria->getId();
+        $this->get('session')->set('filters',$filters);
+        return $this->redirect($this->generateUrl('publicacion'));
+    }
+    
+    public function publicacionesProductosDiscosAction(){
+        $em = $this->getDoctrine()->getManager();
+        $filters = $this->getFilters();
+        $categoria = $em->getRepository('PublicacionesBundle:CategoriasPublicacion')
+                        ->findOneBySlug('productos-discos');
+        if($categoria==null){
+            $categoria=$this->getCategoriaDefault();
+        }                
+        $filters['publicaciones']=$categoria->getId();
+        $this->get('session')->set('filters',$filters);
+        return $this->redirect($this->generateUrl('publicacion'));
+    }
+    
+    public function publicacionesProductosRopaAction(){
+        $em = $this->getDoctrine()->getManager();
+        $filters = $this->getFilters();
+        $categoria = $em->getRepository('PublicacionesBundle:CategoriasPublicacion')
+                        ->findOneBySlug('productos-ropa');
         if($categoria==null){
             $categoria=$this->getCategoriaDefault();
         }                
@@ -201,7 +243,8 @@ class PublicacionController extends Controller
 
         $entity->setCategoria($categoria);                                
 
-        $form   = $this->createForm(new PublicacionType(), $entity);
+        //$form   = $this->createForm(new PublicacionType(), $entity);
+        $form = $this->createFormEspecializado($entity);
 
         return array(
             'entity' => $entity,
@@ -218,8 +261,16 @@ class PublicacionController extends Controller
      */
     public function createAction(Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
         $entity  = new Publicacion();
-        $form = $this->createForm(new PublicacionType(), $entity);
+        //$form = $this->createForm(new PublicacionType(), $entity);
+        $categoriaId=$this->getCategoriaDefault();
+        
+        $categoria=$this->getDoctrine()->getRepository('PublicacionesBundle:CategoriasPublicacion')
+                                        ->find($categoriaId);
+
+        $entity->setCategoria($categoria);
+        $form = $this->createFormEspecializado($entity);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -252,7 +303,8 @@ class PublicacionController extends Controller
             throw $this->createNotFoundException('Unable to find Publicacion entity.');
         }
 
-        $editForm = $this->createForm(new PublicacionType(), $entity);
+        //$editForm = $this->createForm(new PublicacionType(), $entity);
+        $editForm = $this->createFormEspecializado($entity);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
@@ -280,7 +332,8 @@ class PublicacionController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createForm(new PublicacionType(), $entity);
+        //$editForm = $this->createForm(new PublicacionType(), $entity);
+        $editForm = $this->createFormEspecializado($entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
@@ -393,15 +446,14 @@ class PublicacionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $galeria = $em->getRepository('PublicacionesBundle:PublicacionGalerias')
-                      ->findOneBy(array('proyecto'=>$id));  
-        $proyecto = $em->getRepository('PublicacionesBundle:Publicacion')
+                      ->findOneBy(array('publicacion'=>$id));  
+        $publicacion = $em->getRepository('PublicacionesBundle:Publicacion')
                       ->findOneBy(array('id'=>$id));
         if($galeria == null){
             $publicacion_galerias = new PublicacionGalerias();
-            $tipo=  Categorias::$GALERIA_PROYECTOS;
+            $tipo=  $this->getTipoCategoriaGaleria($publicacion);
             $galeria = new Categorias();
             $max=$this->getDoctrine()->getRepository('CategoriasGaleriaBundle:Categorias')->getMaxPosicion();
-
             if(!is_null($max)){
                 $galeria->setPosicion($max+1);
             }else{
@@ -409,13 +461,12 @@ class PublicacionController extends Controller
             }
             $galeria->setTipoCategoria($tipo);
             
-            $galeria->setCategoria($proyecto->getTitulo());
-            $galeria->setDescripcion($proyecto->getDescripcionCorta());
+            $galeria->setCategoria($publicacion->getTitulo());
+            $galeria->setDescripcion($publicacion->getDescripcion());
             $galeria->setIsCategoria(false);
             
             $publicacion_galerias->setGaleria($galeria);
-            $publicacion_galerias->setProyecto($proyecto);
-            
+            $publicacion_galerias->setPublicacion($publicacion);
             
             $em->persist($galeria);
             $em->flush();
@@ -435,11 +486,44 @@ class PublicacionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $publicacion_galeria = $em->getRepository('PublicacionesBundle:PublicacionGalerias')
-                      ->findOneBy(array('proyecto'=>$id));
+                      ->findOneBy(array('publicacion'=>$id));
         $galeria= $publicacion_galeria->getGaleria();
         if(!$galeria==null){
             return $this->redirect($this->generateUrl('categorias_show', array('id'=>$galeria->getId())));
         }
         return $this->redirect($this->generateUrl('publicacion_galerias_create', array('id'=>$id)));
     }
+    
+    private function createFormEspecializado($entity)
+    {
+        switch($entity->getCategoria()->getTipoCategoria())
+        {
+            case CategoriasPublicacion::$NOTICIAS:
+                return $this->createForm(new PublicacionType(), $entity);
+            case CategoriasPublicacion::$ARTISTAS:
+                return $this->createForm(new PublicacionArtistasType(), $entity);
+            case CategoriasPublicacion::$PRODUCTOS_DISCOS:
+            case CategoriasPublicacion::$PRODUCTOS_ROPA:
+                return $this->createForm(new PublicacionProductosType(), $entity);
+            default:
+                return $this->createForm(new PublicacionType(), $entity);    
+        }
+    }
+    
+    private function getTipoCategoriaGaleria($entity){
+        switch($entity->getCategoria()->getTipoCategoria())
+        {
+            case CategoriasPublicacion::$NOTICIAS:
+                return Categorias::$GALERIA_NOTICIAS;
+            case CategoriasPublicacion::$ARTISTAS:
+                return Categorias::$GALERIA_ARTISTAS;
+            case CategoriasPublicacion::$PRODUCTOS_DISCOS:
+                return Categorias::$GALERIA_PRODUCTOS_DISCOS;
+            case CategoriasPublicacion::$PRODUCTOS_ROPA:
+                return Categorias::$GALERIA_PRODUCTOS_ROPA;
+            default:
+                return Categorias::$GALERIA_NOTICIAS;
+        }
+    }
+    
 }

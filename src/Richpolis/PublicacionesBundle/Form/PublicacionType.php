@@ -14,32 +14,11 @@ class PublicacionType extends AbstractType
     {
         $builder
             ->add('titulo','text',array('label'=>'Titulo'))
-            ->add('descripcionCorta','textarea', array(
+            ->add('descripcion','textarea', array(
                     'attr' => array(
                         'class' => 'tinymce',
                         'data-theme' => 'advanced' // Skip it if you want to use default theme
-                    ),'label'=>'Descripcion corta'
-                ))
-            ->add('cliente','text',array('label'=>'Cliente'))
-            ->add('descripcionCliente','textarea', array(
-                    'attr' => array(
-                        'class' => 'tinymce',
-                        'data-theme' => 'advanced' // Skip it if you want to use default theme
-                    ),'label'=>'Descripcion cliente'
-                ))
-            ->add('fecha','genemu_jquerydate',array('label'=>'Date'))
-            ->add('descripcionFecha','textarea', array(
-                    'attr' => array(
-                        'class' => 'tinymce',
-                        'data-theme' => 'advanced' // Skip it if you want to use default theme
-                    ),'label'=>'Descripcion Fecha'
-                ))
-            ->add('location','text',array('label'=>'Locación'))
-            ->add('descripcionLocation','textarea', array(
-                    'attr' => array(
-                        'class' => 'tinymce',
-                        'data-theme' => 'advanced' // Skip it if you want to use default theme
-                    ),'label'=>'Descripcion Locación'
+                    ),'label'=>'Descripcion'
                 ))
             ->add('categoria','entity', array(
                 'class' => 'PublicacionesBundle:CategoriasPublicacion',
@@ -51,6 +30,8 @@ class PublicacionType extends AbstractType
                 'label'     => 'Categoria',
                 'multiple'  => false
             ))
+            ->add('twitter','hidden')
+            ->add('facebook','hidden')
             ->add('posicion','hidden')
             ->add('galeria','hidden')
             ->add('slug','hidden')

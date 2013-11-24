@@ -5,15 +5,7 @@
 {% endblock %}
 
 {% block siderbar %}
-     {% if galeria == "Galeria Principal" %}
-        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_principal'} %}
-     {% elseif galeria == "Galeria About" %}
-        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_about'} %}
-     {% elseif galeria == "Galeria Distribuidores" %}
-        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_distribuidores'} %}
-     {% elseif galeria == "Galeria How To Mix" %}
-        {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': 'galerias_howtomix'} %}   
-     {% endif %}
+  {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': galeria} %}
 {% endblock %}
 
 {% block stylesheets %}
@@ -28,7 +20,7 @@
 {% endblock %}
 
 {% block body %}
-<h1>Editar galeria "{{entity.categoria}}"</h1>
+<h1>Editar registro "{{entity.categoria}}"</h1>
 
 <form id="formPrincipal" action="{{ path('categorias_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
     {{ form_widget(edit_form) }}

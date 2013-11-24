@@ -37,9 +37,12 @@ a.red-social-twitter {
   vertical-align: top;
   height: 35px;
   width: 36px;
+  margin-right: 20px;
+  
 }
 a.red-social-twitter {
   background: url("../images/keyarts/artists/artistas_socialmedia.png") no-repeat 0px 0px;
+  
 }
 a.red-social-facebook {
   background: url("../images/keyarts/artists/artistas_socialmedia.png") no-repeat -49px 0px;
@@ -141,6 +144,7 @@ ul.lista-shop li h3 {
   font-size: 0.9em;
   font-style: italic;
   font-weight: normal;
+  font-weight: bold;
 }
 ul.lista-shop li figure {
   background: url("../images/keyarts/shop/thumb_tienda.png") no-repeat center center;
@@ -222,14 +226,23 @@ ul.lista-shop li figure img {
 }
 #news .ctl-news-left {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 0px;
+  margin-top: 60px;
+  cursor: pointer;
 }
 #news .ctl-news-right {
   position: absolute;
-  top: 60%;
+  top: 50%;
+  margin-top: 60px;
   right: 0px;
+  cursor: pointer;
 }
+
+.boton-mas{
+    cursor: pointer;
+}
+
 .contacto {
   margin: 0 auto 100px;
   width: 90%;
@@ -247,6 +260,7 @@ ul.lista-shop li figure img {
 }
 .contacto .contenido .contenido-contact {
   text-align: justify;
+  font-family: 'florencesans_blackitalic';
 }
 .contacto .formulario form {
   margin-left: 100px;
@@ -256,6 +270,8 @@ ul.lista-shop li figure img {
   padding-top: 24px;
   margin-bottom: 10px;
   width: 100%;
+  min-height: 30px;
+  position: relative;
 }
 .contacto .formulario .input-formulario label,
 .contacto .formulario .input-formulario input,
@@ -263,11 +279,17 @@ ul.lista-shop li figure img {
   display: inline-block;
   vertical-align: top;
   font-size: 1em;
-  text-transform: uppercase;
   font-style: normal;
   padding: 5px;
   border: none;
+  width: 290px;
+  font-family: 'florencesans_blackitalic';
+
 }
+
+.contacto .formulario .input-formulario textarea {
+    height: 100px;
+}    
 .contacto .formulario .input-formulario input {
   text-transform: none;
   float: right;
@@ -279,7 +301,63 @@ ul.lista-shop li figure img {
   margin-right: 50px;
   float: right;
   text-transform: uppercase;
+  font-family: 'florencesans_blackitalic';
 }
+
+.contacto .formulario .input-formulario ul{
+  position: absolute;
+  right: -100px;
+  padding: 0;
+  list-style: none;
+  color: red;
+  text-align: left; 
+  width: 150px;
+  top: -10px;
+}
+
+.cerrar-contenido-producto{
+  width: 21px;
+  height: 21px;
+  background: url("../images/close_button.png") no-repeat center center;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+}
+
+.cerrar-contenido-artista{
+  width: 18px;
+  height: 18px;
+  background: url("../images/close.png") no-repeat center center;
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 7px; 
+}
+
+.contenido-news{
+    min-height: 800px;
+}
+
+.contenido-shop{
+    min-height: 800px;
+}
+
+.lista-artistas{
+    min-height: 800px;
+}
+
+.loader-richpolis{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -128px;
+    z-index: 5000;
+}
+
 .contenido-ajax {
   padding: 10px 0px;
   margin: 30px auto;
@@ -302,7 +380,7 @@ ul.lista-shop li figure img {
   width: 100%;
 }
 .contenido-ajax .galeria-artistas ul {
-width
+  width: 100%;
   padding: 0;
   margin: 0;
 }
@@ -344,6 +422,7 @@ width
   font-style: italic;
   font-size: 2em;
   margin-top: 10px;
+  position: relative;
 }
 .contenido-ajax .contenido-artistas p {
   font-style: italic;
@@ -391,6 +470,7 @@ width
   position: absolute;
   width: 100%;
   z-index: 1000;
+  font-family: 'florencesans_blackitalic';
 }
 .lista-artistas li figcaption span {
   margin: 20px;
@@ -444,6 +524,7 @@ width
   margin: 50px auto;
   width: 90%;
 }
+
 .noticias li {
   list-style: none;
   margin-top: 20px;
@@ -455,17 +536,18 @@ width
   width: 100%;
   font-size: 2em;
   text-transform: uppercase;
-  font-style: italic;
   font-weight: bold;
+  font-family: 'florencesans_blackitalic';
 }
 .noticias div.titulo-noticia span {
   position: absolute;
   right: 0px;
-  font-size: 0.7em;
+  font-size: 0.5em;
   color: #808080;
   text-transform: capitalize;
   font-style: normal;
   font-weight: normal;
+  bottom: 1px
 }
 .noticias figure.imagen-noticia,
 .noticias p,
@@ -496,6 +578,7 @@ width
   padding: 0px 20px;
   font-size: 0.8em;
   text-align: justify;
+  font-style: italic;
 }
 .noticias div.imagenes-noticia {
   width: 50px;
@@ -505,7 +588,6 @@ width
   border-top: 1px solid #808080;
   border-bottom: 1px solid #808080;
   color: #808080;
-  font-style: italic;
   font-weight: bold;
   margin: 30px auto;
   text-align: center;
@@ -523,6 +605,7 @@ width
   transition: color 0.5s ease;
   text-decoration: none;
   vertical-align: top;
+  font-family: 'florencesans_blackitalic';
 }
 .categorias-shop a.categoria-shop:hover,
 .categorias-shop a.categoria-shop.active {
@@ -551,6 +634,7 @@ width
 }
 .contenido-producto h3 {
   font-style: italic;
+  position: relative;
 }
 .contenido-producto hr {
   color: transparent;
@@ -601,11 +685,67 @@ width
 }
 .contenido-producto .input-form-producto {
   margin-top: 10px;
+  position: relative;
 }
+
+.contenido-producto .input-form-producto ul{
+  position: absolute;
+  right: -20px;
+  padding: 0;
+  list-style: none;
+  color: yellow;
+  text-align: left; 
+  width: 150px;
+  top: -10px;
+}
+
+#toTo_button {
+  width: 70px;
+  text-align: center;
+  padding: 5px;
+  position: fixed;
+  bottom: 10px;
+  right: 12px;
+  cursor: pointer;
+  color: #666;
+  text-decoration: none;
+}
+
 .contenido-producto button {
-  float: right;
-  margin-right: 200px;
   background: none;
   border: none;
-  color: #fff;
+  margin-right: 200px;
+  float: right;
+  text-transform: uppercase;
+  color: white;
+  font-family: 'florencesans_blackitalic';
+}
+
+.menu-seccion{
+    opacity: 0;
+}
+
+.error-formulario{
+    color: red;
+}
+
+.ok-formulario{
+    color: green;
+}
+
+#twitter-feed{
+    position: relative;
+}
+
+.redes-sociales-twitter-feed{
+    width: 80%;
+    margin:  auto;
+    position: relative;
+    bottom: -80px;
+    -webkit-transform: rotate(-4deg);
+    -moz-transform: rotate(-4deg);
+    -ms-transform: rotate(-4deg);
+    -o-transform: rotate(-4deg);
+    transform: rotate(-4deg);
+    z-index: 2000;
 }

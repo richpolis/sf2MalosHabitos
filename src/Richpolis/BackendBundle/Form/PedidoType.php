@@ -1,33 +1,34 @@
 <?php
 
-namespace Richpolis\FrontendBundle\Form;
+namespace Richpolis\BackendBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Richpolis\FrontendBundle\Entity\DiageoUsuarios;
 
-class DiageoUsuariosType extends AbstractType
+class PedidoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('usuario')
+            ->add('name','text',array('label'=>'Nombre'))
             ->add('email','email')
-            ->add('password','hidden')
-            ->add('isActive','hidden')
-            ;
+            ->add('subject','hidden')
+            ->add('telefono','text',array('label'=>'Telefono'))    
+            ->add('producto','hidden')
+
+        ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Richpolis\FrontendBundle\Entity\DiageoUsuarios'
+            'data_class' => 'Richpolis\BackendBundle\Entity\Pedido'
         ));
     }
 
     public function getName()
     {
-        return 'diageo_usuariostype';
+        return 'richpolis_backendbundle_pedidotype';
     }
 }

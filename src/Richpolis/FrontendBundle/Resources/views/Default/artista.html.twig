@@ -1,29 +1,37 @@
-        <div class="galeria-artistas">
-            <ul class="lista-galeria-artistas">
-                {% for registro in range(1,6) %}
-                <li>
-                    <figure>
-                        <img src="{{asset('images/demo/M16-Eagle-Nebula.jpeg')}}" alt="imagen">
-                    </figure>
-                </li>
-                {% endfor %}
-            </ul>
-            <div class="ctl-galeria-artistas-left"></div>
-            <div class="ctl-galeria-artistas-right"></div>
-        </div>
-        <div class="contenido-artistas">
-            <h3>Nombre del artista</h3>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita odit iure ipsam voluptatum et? Ducimus, illo, sed, recusandae, deserunt facere dolor consectetur esse at rem explicabo odit ab minima architecto.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, deserunt, nostrum, aspernatur, reprehenderit nam quidem minus illo ducimus consequuntur iure ut deleniti quae magni tempore assumenda similique eos atque nulla.
-            </p>
-        </div>
-        <div class="redes-sociales-artistias">
-            <a href="#" class="red-social-twitter"></a>
-            <a href="#" class="red-social-facebook"></a>
-        </div>
+<div class="galeria-artistas">
+    <ul class="lista-galeria-artistas">
+        {% for galeria in artista.galerias %}
+        <li>
+            <figure>
+                {% if galeria.isImagen == true %}
+                    <img src='{{galeria.webPath | apply_filter('galerias_artistas') }}' alt="{{galeria.titulo}}"/>
+                {% else %}
+                    {{galeria.archivoView | raw }}
+                {% endif %}
+            </figure>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="ctl-galeria-artistas-left"></div>
+    <div class="ctl-galeria-artistas-right"></div>
+</div>
+<div class="contenido-artistas">
+    <h3>
+    {{artista.categoria}}
+        <span class="cerrar-contenido-artista">&nbsp;</span>
+    </h3>
+    {{artista.descripcion | raw }}
+</div>
+<div class="redes-sociales-artistias">
+    {% if artista.twitter | length > 0%}
+    <a href="{{artista.twitter}}" class="red-social-twitter" target="_blank"></a>
+    {% endif %}
+    {% if artista.facebook | length > 0 %}
+    <a href="{{artista.facebook}}" class="red-social-facebook" target="_blank"></a>
+    {% endif %}
+</div>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('.lista-galeria-artistas').bxSlider({
             minSlides: 1,
             maxSlides: 1,
@@ -33,6 +41,9 @@
             nextSelector: '.ctl-galeria-artistas-right',
             prevText: '',
             nextText: '',
+        });
+        $(".cerrar-contenido-artista").on("click",function(){
+            $(".contenido-ajax").slideUp(500);
         });
     });
 </script>

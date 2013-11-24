@@ -14,17 +14,10 @@ class LoadCategoriasData extends AbstractFixture implements OrderedFixtureInterf
   {
     $principal = new Categorias();
     $principal->setCategoria('Galeria Principal');
-    $principal->setTipoCategoria(Categorias::$GALERIA_PRINCIPAL);
+    $principal->setTipoCategoria(Categorias::$GALERIA);
     $principal->setPosicion(1);
- 
-    $proyecto = new Categorias();
-    $proyecto->setCategoria('Galeria para proyecto');
-    $proyecto->setTipoCategoria(Categorias::$GALERIA_PROYECTOS);
-    $proyecto->setPosicion(2);
-    
         
     $em->persist($principal);
-    $em->persist($proyecto);
     $em->flush();
  
 

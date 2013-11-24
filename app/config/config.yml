@@ -92,15 +92,15 @@ knp_paginator:
 
 avalanche_imagine:
     filters:
-        galerias_general:
+        galerias_noticias:
             type:    thumbnail
             options: { size: [500, 500], mode: inset, cache_type: public, cache_expires: '2 weeks' }
-        publicaciones_galeria:
+        galerias_artistas:
             type:    thumbnail
-            options: { size: [760, 397], mode: outbound, cache_type: public, cache_expires: '2 weeks' }
-        galeria_principal:
+            options: { size: [389, 203], mode: outbound, cache_type: public, cache_expires: '2 weeks' }
+        galerias_productos:
             type:    thumbnail
-            options: { size: [388, 181], mode: outbound, cache_type: public, cache_expires: '2 weeks' }    
+            options: { size: [400, 276], mode: outbound, cache_type: public, cache_expires: '2 weeks' }    
 
 parameters:
     # dirección de correo electrónico

@@ -10,10 +10,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Richpolis\BackendBundle\Entity\Contacto;
 use Richpolis\BackendBundle\Form\ContactoType;
-use Richpolis\PublicacionesBundle\Entity\CategoriasPublicacion;
+use Richpolis\BackendBundle\Entity\Pedido;
+use Richpolis\BackendBundle\Form\PedidoType;
 use Richpolis\CategoriasGaleriaBundle\Entity\Categorias;
-use Richpolis\FrontendBundle\Entity\DiageoUsuarios;
-use Richpolis\FrontendBundle\Form\DiageoUsuariosType;
 
 /**
  * Frontend controller.
@@ -29,17 +28,81 @@ class DefaultController extends Controller {
      */
     public function indexAction()
     {
-        /*$em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
        
-        $galerias = $em->getRepository('CategoriasGaleriaBundle:Galerias')
-                       ->getGaleriaPorTipoCategoria(Categorias::$GALERIA_PRINCIPAL);
-        */
+        $contacto = new Contacto();
+        $form = $this->createForm(new ContactoType(), $contacto);
+        
+        $about = $em->getRepository('BackendBundle:Configuraciones')->findOneBySlug('about'); 
+        $contacto = $em->getRepository('BackendBundle:Configuraciones')->findOneBySlug('contacto'); 
+        
         return $this->render("FrontendBundle:Default:index.html.twig",array(
-          /*"galerias"=>$galerias,*/
+          "about"=>$about,
+          "contacto"=>$contacto,
+          "form"=>$form->createView()  
         ));
-
     }
 
+    /**
+     * Lists all news.
+     *
+     * @Route("/noticias", name="noticias")
+     * @Method({"GET"})
+     * @Template()
+     */
+    public function noticiasAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        /*$query = $em->getRepository('CategoriasGaleriaBundle:Categorias')
+                            ->getQueryCategoriasPorTipoYActivas(Categorias::$GALERIA_NOTICIAS,true);*/
+        $query = $em->getRepository('CategoriasGaleriaBundle:Categorias')
+                            ->getQueryCategoriasGaleriaActivas(Categorias::$GALERIA_NOTICIAS,false);
+        
+        
+        $paginator = $this->get('knp_paginator');
+
+        $pagination = $paginator->paginate(
+            $query,
+            $this->getRequest()->query->get('pageNoticias', 1),
+            2,
+            array('distinct' => false)
+        );
+
+        $data = $pagination->getPaginationData();
+
+        //var_dump($data);
+
+        return array(
+            'pagination' => $pagination,
+            'data'=>$data,
+        );
+    }
+
+    /**
+     * Lista las imagenes de una noticia.
+     *
+     * @Route("/imagenes/noticias/{id}", name="imagenes_noticias")
+     */
+    public function imagenesNoticiasAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $imagenes = $em->getRepository('CategoriasGaleriaBundle:Galerias')
+                        ->getGaleriaPorCategoriaYStatus($id,true);
+
+        $arreglo = array();
+        for($cont=0;$cont<count($imagenes);$cont++){
+            $arreglo['imagenes'][$cont]=$imagenes[$cont]->getWebPath();
+            $arreglo['titulos'][$cont]=""; //$imagenes[$cont]->getTitulo();
+            $arreglo['descripciones'][$cont]=""; //$imagenes[$cont]->getDescripcion();
+        }
+        
+        $response = new Response(json_encode($arreglo));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+    
     /**
      * Lista los ultimos tweets.
      *
@@ -69,6 +132,24 @@ class DefaultController extends Controller {
     }
     
     /**
+     * Lista todos los artistas.
+     *
+     * @Route("/artistas", name="artistas")
+     * @Template()
+     */
+    public function artistasAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $artistas = $em->getRepository('CategoriasGaleriaBundle:Categorias')
+                            ->getCategoriasPorTipoYActivas(Categorias::$GALERIA_ARTISTAS,false);
+        
+        return array(
+            'artistas' => $artistas,
+        );
+    }
+    
+    /**
      * Envia los datos de un artista.
      *
      * @Route("/artista/{id}", name="show_artista")
@@ -76,10 +157,39 @@ class DefaultController extends Controller {
      */
     public function getArtistaAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $artista = $em->getRepository('CategoriasGaleriaBundle:Categorias')
+                      ->getCategoriaConGaleriaPorId($id, true);
+        
         return $this->render("FrontendBundle:Default:artista.html.twig",array(
-            'artista'=>array(),
+            'artista'=>$artista,
         ));
 
+    }
+    
+    /**
+     * Lista todos los productos.
+     *
+     * @Route("/productos/{tipo}", name="productos", defaults={"tipo"="discos"})
+     * @Template()
+     */
+    public function productosAction($tipo)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        if($tipo=="discos"){
+            $tipoCategoria = Categorias::$GALERIA_PRODUCTOS_DISCOS;
+        }else{
+            $tipoCategoria = Categorias::$GALERIA_PRODUCTOS_ROPA;
+        }
+
+        $productos = $em->getRepository('CategoriasGaleriaBundle:Categorias')
+                            ->getCategoriasPorTipoYActivas($tipoCategoria,false);
+        
+        return array(
+            'productos' => $productos,
+        );
     }
     
     /**
@@ -90,8 +200,20 @@ class DefaultController extends Controller {
      */
     public function getProductoAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        
+        $producto = $em->getRepository('CategoriasGaleriaBundle:Categorias')
+                      ->getCategoriaConGaleriaPorId($id, true);
+        
+        $pedido = new Pedido();
+        $pedido->setProducto($id);
+        $pedido->setSubject("Para cotizacion");
+        $form = $this->createForm(new PedidoType(), $pedido);
+        
+        
         return $this->render("FrontendBundle:Default:producto.html.twig",array(
-            'producto'=>array(),
+            'producto'=>$producto,
+            'form'=>$form->createView(),
         ));
 
     }
@@ -139,10 +261,7 @@ class DefaultController extends Controller {
             $mensaje="Violacion de acceso";
         }
         
-        $em = $this->getDoctrine()->getManager();
-        $contacto = $em->getRepository('BackendBundle:Configuraciones')->findOneBySlug('contacto'); 
         return $this->render("FrontendBundle:Default:contacto.html.twig",array(
-              'contacto'=>$contacto,
               'form' => $form->createView(),
               'ok'=>$ok,
               'error'=>$error,
@@ -150,7 +269,58 @@ class DefaultController extends Controller {
         ));
     }
     
-    
+    /**
+     * @Route("/pedido", name="frontend_pedido")
+     * @Method({"GET", "POST"})
+     */
+    public function pedidoAction() {
+        $pedido = new Pedido();
+        $form = $this->createForm(new PedidoType(), $pedido);
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+
+            if ($form->isValid()) {
+                $datos=$form->getData();
+                $producto = $em->getRepository('CategoriasGaleriaBundle:Categorias')
+                               ->findOneBy(array('id'=>$datos->getProducto()));
+                $datos->setStringProducto($producto->getCategoria());
+                
+                $message = \Swift_Message::newInstance()
+                        ->setSubject($datos->getSubject())
+                        ->setFrom($this->container->getParameter('richpolis.emails.to_email'))
+                        ->setTo($datos->getEmail())
+                        ->setBody($this->renderView('BackendBundle:Default:pedidoEmail.html.twig', array('datos' => $datos)), 'text/html');
+                $this->get('mailer')->send($message);
+
+                $this->get('session')->setFlash('noticia', 'Gracias por enviar tu correo, nos comunicaremos a la brevedad posible!');
+
+                // Redirige - Esto es importante para prevenir que el usuario
+                // reenvíe el formulario si actualiza la página
+                $ok=true;
+                $error=false;
+                $mensaje="El mensaje ha sido enviado";
+                $pedido = new Pedido();
+                $form = $this->createForm(new PedidoType(), $pedido);
+            }else{
+                $ok=false;
+                $error=true;
+                $mensaje="El mensaje no se ha podido enviar";
+            }
+        }else{
+            $ok=false;
+            $error=false;
+            $mensaje="Violacion de acceso";
+        }
+        
+        return $this->render("FrontendBundle:Default:pedido.html.twig",array(
+              'form' => $form->createView(),
+              'ok'=>$ok,
+              'error'=>$error,
+              'mensaje'=>$mensaje,
+        ));
+    }
     
 }
 

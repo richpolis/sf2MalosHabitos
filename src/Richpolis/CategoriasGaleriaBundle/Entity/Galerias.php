@@ -523,15 +523,15 @@ class Galerias
         return \Richpolis\BackendBundle\Utils\Richsys::getArchivoView($opciones);
     }
     public function getWidth(){
-        switch($this->getCategoria()->getTipoCategoria()){
-            case Categorias::$GALERIA_PRINCIPAL: //300x225
-                $resp= 300;
+       switch($this->getCategoria()->getTipoCategoria()){
+            case Categorias::$GALERIA_NOTICIAS: 
+                $resp= 222;
                 break;
-            case Categorias::$GALERIA_PROYECTOS: //314x148
-                $resp= 314;
+            case Categorias::$GALERIA_ARTISTAS:
+                $resp= 284;
                 break;
             default :
-                $resp= 300;
+                $resp= 221;
                 break;
             
         }
@@ -539,16 +539,23 @@ class Galerias
     }
     public function getHeight(){
         switch($this->getCategoria()->getTipoCategoria()){
-            case Categorias::$GALERIA_PRINCIPAL: //680x320
-                $resp= 225;
+            case Categorias::$GALERIA_NOTICIAS: 
+                $resp= 167;
                 break;
-            case Categorias::$GALERIA_PROYECTOS: //314x148
-                $resp= 148;
+            case Categorias::$GALERIA_ARTISTAS:
+                $resp= 213;
                 break;
             default :
-                $resp= 225;
+                $resp= 144;
                 break;
         }
         return $resp;
+    }
+
+    public function getIsImagen(){
+        if($this->getTipoArchivo()==Galerias::$IMAGEN)
+            return true;
+        else
+            return false;
     }
 }

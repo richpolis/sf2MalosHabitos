@@ -1,16 +1,30 @@
 <ul class="nav nav-list">
-    <li class="nav-header">Galerias</li>
-    <li {% if pagina=="galerias-principal" %} class="active" {% endif %}>
-        <a href="{{path('backend_galerias_principal')}}">Principal</a>
+    <li class="nav-header">Publicaciones</li>
+    <li {% if pagina=="Noticias" %} class="active" {% endif %}>
+        <a href="{{path('backend_galerias_noticias')}}">Noticias</a>
     </li>
-    <li {% if pagina=="galerias-proyectos" %} class="active" {% endif %}>
-        <a href="{{path('backend_galerias_proyecto')}}">Proyectos</a>
+    <li {% if pagina=="Artistas" %} class="active" {% endif %}>
+        <a href="{{path('backend_galerias_artistas')}}">Artistas</a>
     </li>
-    
-    <li class="nav-header">Proyectos</li>
-    <li {% if pagina=="publicaciones-proyectos" %} class="active" {% endif %}>
-        <a href="{{path('publicaciones_proyecto')}}">Proyectos</a>
+    <li {% if pagina=="Productos: discos" %} class="active" {% endif %}>
+        <a href="{{path('backend_galerias_productos_discos')}}">Productos: Discos</a>
     </li>
+    <li {% if pagina=="Productos: ropa" %} class="active" {% endif %}>
+        <a href="{{path('backend_galerias_productos_ropa')}}">Productos: Ropa</a>
+    </li>
+    <!--li class="nav-header">Publicaciones</li>
+    <li {% if pagina=="Noticias" %} class="active" {% endif %}>
+        <a href="{{path('publicaciones_noticias')}}">Noticias</a>
+    </li>
+    <li {% if pagina=="Artistas" %} class="active" {% endif %}>
+        <a href="{{path('publicaciones_artistas')}}">Artistas</a>
+    </li>
+    <li {% if pagina=="Productos: discos" %} class="active" {% endif %}>
+        <a href="{{path('publicaciones_productos_discos')}}">Productos: Discos</a>
+    </li>
+    <li {% if pagina=="Productos: ropa" %} class="active" {% endif %}>
+        <a href="{{path('publicaciones_productos_ropa')}}">Productos: Ropa</a>
+    </li-->
     <li class="nav-header">Configuraciones</li>
     <li {% if pagina=="configuraciones" %} class="active" {% endif %}>
         <a href="{{path('backend_configuraciones')}}">Configuraciones</a>

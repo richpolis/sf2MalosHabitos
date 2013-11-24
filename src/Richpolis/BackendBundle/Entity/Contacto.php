@@ -95,20 +95,20 @@ class Contacto
             'message' => 'Ingresar un email correcto'
         )));
 
-        /*$metadata->addPropertyConstraint('subject', new NotBlank(array(
+        $metadata->addPropertyConstraint('subject', new NotBlank(array(
             'message' => 'Ingresar un asunto'
-        )));*/
-        
-        $metadata->addPropertyConstraint('telefono', new NotBlank(array(
-            'message' => 'Ingresar un telefono'
         )));
+        
+        /*$metadata->addPropertyConstraint('telefono', new NotBlank(array(
+            'message' => 'Ingresar un telefono'
+        )));*/
         
         $metadata->addPropertyConstraint('body', new NotBlank(array(
             'message' => 'Ingresar un mensaje'
         )));
         $metadata->addPropertyConstraint('body', new Length(array(
             'min'        => 3,
-            'minMessage' => 'The message must be at least {{ limit }} characters length',
+            'minMessage' => 'El mensaje debe de ser no menos de {{ limit }} caracteres de largo',
         )));
     }
 }

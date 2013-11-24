@@ -1,11 +1,19 @@
 <div class="contenido-producto">
-    <h3>Nombre del producto</h3>
+    <h3>
+    {{producto.categoria}}
+    <span class="cerrar-contenido-producto">&nbsp;</span>
+    </h3>
+    
     <div class="contenedor-galeria-producto">
         <ul class="galeria-producto">
-            {% for galeria in range(1,6) %}
+            {% for galeria in producto.galerias %}
                 <li>
                     <figure>
-                        <img src="{{asset('images/demo/20426_nebula.jpg')}}" alt="{{galeria}}"/>
+                        {% if galeria.isImagen == true %}
+                        <img src='{{galeria.webPath | apply_filter('galerias_productos') }}' alt="{{galeria.titulo}}"/>
+                        {% else %}
+                        {{galeria.archivoView | raw }}
+                        {% endif %}
                     </figure>
                 </li>
             {% endfor %}
@@ -14,28 +22,14 @@
         <div class="ctl-galeria-producto-right"></div>
     </div>
     <div class="descripcion-producto">
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, earum, error aperiam unde incidunt voluptatem doloribus illo nam laborum molestiae. Dolorem, porro velit nostrum doloribus officia sapiente fugiat vitae sequi?
-        </p>
+        {{producto.descripcion | raw }}
     </div>
     <hr/>
     <h3>Comprar</h3>
     <p>Gracias por el interes en nuestro producto, envianos tu nombre, email o telefono y te contactaremos para hacer el pedido</p>
-    <form action="" class="form-pedido-producto">
-        <div class="input-form-producto">
-            <input type="text" value="" placeholder="Nombre*"/>
-        </div>
-        <div class="input-form-producto">
-            <input type="text" value="" placeholder="Email*"/>
-        </div>
-        <div class="input-form-producto">
-            <input type="text" value="" placeholder="Telefono (opcional)"/>
-        </div>
-        <div class="input-form-producto">
-            <button id="enviar-form-producto">Enviar</button>
-        </div>
-    </form>
-
+    <div class="formulario-pedido">
+         {% include 'FrontendBundle:Default:pedido.html.twig' with {'form':form}%}  
+    </div>
 </div>
 
 
@@ -51,5 +45,10 @@
             prevText: '',
             nextText: '',
         });
+        
+        $(".cerrar-contenido-producto").on("click",function(){
+            closeDialogModalRS();
+        });
+        
     });
 </script>

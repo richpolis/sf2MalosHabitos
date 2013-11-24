@@ -12,7 +12,7 @@ class CategoriasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('categoria')
+            ->add('categoria','text',array('label'=>'Titulo'))
             ->add('descripcion','textarea', array(
                 'attr' => array(
                    'class' => 'tinymce',
@@ -24,9 +24,13 @@ class CategoriasType extends AbstractType
                 'choices'=>Categorias::getArrayTipoCategorias(),
                 'preferred_choices'=>Categorias::getPreferedTipoCategoria()
                 ))
+            ->add('twitter',"hidden")
+            ->add('facebook',"hidden")    
             ->add('posicion',"hidden")
+            ->add('portada',"hidden")
             ->add('isActive',null,array('label'=>'Activo?','required'=>false))
-            ->add('isCategoria',null,array('label'=>'Categorias?','required'=>false))    
+            ->add('isCategoria','hidden')    
+            //->add('isCategoria',null,array('label'=>'Categorias?','required'=>false))    
         ;
     }
 

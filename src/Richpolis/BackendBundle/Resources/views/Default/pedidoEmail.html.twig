@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Pedido y/o Cotizacion!{% endblock %}
+
+{% block body %}
+<table>
+	<tr colspan="2">
+		<th>Pedido desde MalosHabitos.com</th>
+	</tr>	
+	<tr>
+		<td style="background-color: gray;color: white;">
+			Nombre:
+		<td>
+		<td>
+			{{datos.name}}
+		<td>
+	</tr>
+	<tr>
+		<td style="background-color: gray;color: white;">
+			Email:
+		<td>
+		<td>
+			{{datos.email}}
+		<td>
+	</tr>	
+        <tr>
+		<td style="background-color: gray;color: white;">
+			Telefono:
+		<td>
+		<td>
+			{{datos.telefono}}
+		<td>
+	</tr>
+	<tr>
+		<td style="background-color: gray;color: white;">
+			Producto:
+		<td>
+		<td>
+			{{datos.stringProducto }}
+		<td>
+	</tr>		
+</table>
+{% endblock %}

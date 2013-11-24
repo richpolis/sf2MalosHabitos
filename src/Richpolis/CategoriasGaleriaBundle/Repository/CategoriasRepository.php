@@ -65,7 +65,7 @@ class CategoriasRepository extends EntityRepository
                JOIN p.galerias g 
                WHERE p.id = :categoria 
                AND g.isActive = :active 
-               ORDER BY g.posicion DESC
+               ORDER BY g.posicion ASC
         ')->setParameters(array('categoria'=> $categoria_id,'active'=>$active));
         
         $categorias=$query->getResult();
@@ -104,7 +104,7 @@ class CategoriasRepository extends EntityRepository
                     ->where('c.tipoCategoria=:tipo')
                     ->setParameter('tipo', $tipoCategoria)
                     ->orderBy('c.posicion', 'DESC')
-                    ->addOrderBy('g.posicion', 'DESC'); 
+                    ->addOrderBy('g.posicion', 'ASC'); 
         if(!$todas){
             $query->andWhere('c.isActive=:active')
                   ->setParameter('active', true);
@@ -117,13 +117,11 @@ class CategoriasRepository extends EntityRepository
         return $query->getResult();
     }
     
-    public function getQueryCategoriasGaleriaActivas($tipoCategoria,$todas=false){
-        $query=$this->createQueryBuilder('c')
-                    //->leftJoin('c.galerias', 'g') 
+    public function getQueryCategoriasGaleriaActivas($tipoCategoria,$todas=false,$inicial=0,$cuantos=0){
+         $query=$this->createQueryBuilder('c')
                     ->where('c.tipoCategoria=:tipo')
                     ->setParameter('tipo', $tipoCategoria)
                     ->orderBy('c.posicion', 'DESC');
-                    //->addOrderBy('g.posicion','DESC'); 
         if(!$todas){
             $query->andWhere('c.isActive=:active')
                   ->setParameter('active', true);
@@ -135,6 +133,8 @@ class CategoriasRepository extends EntityRepository
         $query=$this->getQueryCategoriasGaleriaActivas($tipo, $todas);
         return $query->getResult();
     }
+    
+    
     
     public function getCategoriasActuales(){
         $em=$this->getEntityManager();
@@ -163,20 +163,24 @@ class CategoriasRepository extends EntityRepository
         return $categorias;        
     }
     
-    public function getRegistroUpOrDown($posicionRegistro,$up=true){
+    public function getRegistroUpOrDown(Categorias $categoria,$up=true){
         // $up = true, $up = false is down
         if($up){
             //up
             $query=$this->createQueryBuilder('p')
-                    ->where('p.posicion>:posicion')
-                    ->setParameter('posicion', $posicionRegistro)
+                    ->where('p.posicion<:posicion')
+                    ->setParameter('posicion', $categoria->getPosicion())
+                    ->andWhere('p.tipoCategoria=:tipo')
+                    ->setParameter('tipo',$categoria->getTipoCategoria())
                     ->orderBy('p.posicion', 'DESC');
         }else{
             //down
             $query=$this->createQueryBuilder('p')
-                    ->where('p.posicion<:posicion')
-                    ->setParameter('posicion', $posicionRegistro)
-                    ->orderBy('p.posicion', 'DESC');
+                    ->where('p.posicion>:posicion')
+                    ->setParameter('posicion', $categoria->getPosicion())
+                    ->andWhere('p.tipoCategoria=:tipo')
+                    ->setParameter('tipo',$categoria->getTipoCategoria())
+                    ->orderBy('p.posicion', 'ASC');
         }
         
         return $query->getQuery()->setMaxResults(1)->getOneOrNullResult();

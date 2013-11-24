@@ -13,33 +13,49 @@ use Richpolis\PublicacionesBundle\Entity\PublicacionGalerias;
  */
 class PublicacionGaleriasRepository extends EntityRepository
 {
-    public function findProyectosAndGalerias()
+    public function findPublicacionsAndGalerias()
     {
         $em = $this->getEntityManager();
         $consulta = $em->createQuery('
             SELECT pg, p, c, g
             FROM PublicacionesBundle:PublicacionGalerias pg
             JOIN pg.galeria c 
-            JOIN pg.proyecto p 
+            JOIN pg.publicacion p 
             JOIN c.galerias g 
             ORDER BY p.createdAt ASC, g.posicion ASC
         ');
         return $consulta->getResult();
     }
     
-    public function findOneProyectoAndGaleria($idProyecto)
+    public function queryPublicacionesAndGaleriasByCategoria($categoria)
     {
         $em = $this->getEntityManager();
         $consulta = $em->createQuery('
             SELECT pg, p, c, g
             FROM PublicacionesBundle:PublicacionGalerias pg
             JOIN pg.galeria c 
-            JOIN pg.proyecto p 
+            JOIN pg.publicacion p 
+            JOIN c.galerias g 
+            WHERE p.categoria=:categoria
+            ORDER BY p.posicion ASC, g.posicion ASC
+        ');
+        $consulta->setParameter('categoria',$categoria);
+        return $consulta;
+    }
+
+    public function findOnePublicacionAndGaleria($idPublicacion)
+    {
+        $em = $this->getEntityManager();
+        $consulta = $em->createQuery('
+            SELECT pg, p, c, g
+            FROM PublicacionesBundle:PublicacionGalerias pg
+            JOIN pg.galeria c 
+            JOIN pg.publicacion p 
             JOIN c.galerias g 
             WHERE p.id=:proyecto
             ORDER BY p.createdAt ASC, g.posicion ASC
         ');
-        $consulta->setParameter('proyecto', $idProyecto);
+        $consulta->setParameter('proyecto', $idPublicacion);
         return $consulta->getOneOrNullResult();
     }
 }

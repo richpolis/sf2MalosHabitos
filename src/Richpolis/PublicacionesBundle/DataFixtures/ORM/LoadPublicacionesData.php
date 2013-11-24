@@ -12,14 +12,31 @@ class LoadPublicacionesData extends AbstractFixture implements OrderedFixtureInt
 {
   public function load(ObjectManager $em)
   {
-    $principal = new CategoriasPublicacion();
-    $principal->setCategoria('Proyectos');
-    $principal->setTipoCategoria(CategoriasPublicacion::$PROYECTOS);
-    $principal->setPosicion(1);
+    $noticias = new CategoriasPublicacion();
+    $noticias->setCategoria('Noticias');
+    $noticias->setTipoCategoria(CategoriasPublicacion::$NOTICIAS);
+    $noticias->setPosicion(1);
+    
+    $artistas = new CategoriasPublicacion();
+    $artistas->setCategoria('Artistas');
+    $artistas->setTipoCategoria(CategoriasPublicacion::$ARTISTAS);
+    $artistas->setPosicion(2);
+    
+    $productosRopa = new CategoriasPublicacion();
+    $productosRopa->setCategoria('Productos: Ropa');
+    $productosRopa->setTipoCategoria(CategoriasPublicacion::$PRODUCTOS_ROPA);
+    $productosRopa->setPosicion(3);
+    
+    $productosDiscos = new CategoriasPublicacion();
+    $productosDiscos->setCategoria('Productos: Discos');
+    $productosDiscos->setTipoCategoria(CategoriasPublicacion::$PRODUCTOS_DISCOS);
+    $productosDiscos->setPosicion(4);
  
     
-    $em->persist($principal);
-    
+    $em->persist($noticias);
+    $em->persist($artistas);
+    $em->persist($productosRopa);
+    $em->persist($productosDiscos);
     
     $em->flush();
  

@@ -23,7 +23,7 @@ class AppKernel extends Kernel
             new Richpolis\FrontendBundle\FrontendBundle(),
             new Richpolis\BackendBundle\BackendBundle(),
             new Richpolis\CategoriasGaleriaBundle\CategoriasGaleriaBundle(),
-            new Richpolis\PublicacionesBundle\PublicacionesBundle(),
+            //new Richpolis\PublicacionesBundle\PublicacionesBundle(),
             new Genemu\Bundle\FormBundle\GenemuFormBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Avalanche\Bundle\ImagineBundle\AvalancheImagineBundle(),

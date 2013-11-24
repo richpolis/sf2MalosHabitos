@@ -1,0 +1,33 @@
+{% if data.previous is defined %}
+<div class="ctl-news-left" onclick="javascript:paginaNoticias({{data.previous}});">
+        <img src="{{asset('images/keyarts/news/left_arrow.png')}}" alt="left"/>
+</div>
+{% endif %}
+<ul class="noticias">
+        {% for noticia in pagination %}
+        <li class="noticia">
+            <div class="titulo-noticia">
+                {{noticia.categoria}} 
+                <span>
+                    {{noticia.createdAt|date('d/M/Y')}}
+                </span>
+            </div>
+            <figure class="imagen-noticia">
+                <img src="{{noticia.portada}}" alt="{{noticia.categoria}}">
+            </figure>
+            {{ noticia.descripcion | raw }}
+            <div class="imagenes-noticia">
+                <div class="boton-mas" onclick="javascript:showImagenesNoticia({{noticia.id}});">
+                    <img src="{{asset('images/keyarts/news/mas.png')}}" alt="más"/> 
+                </div>
+            </div>
+        </li>
+        {% else %}     
+            <li>Sin entradas</li>
+        {% endfor %}
+</ul>
+{% if data.next is defined %}
+<div class="ctl-news-right" onclick="javascript:paginaNoticias({{data.next}});">
+   <img src="{{asset('images/keyarts/news/right_arrow.png')}}" alt="right"/>
+</div>
+{% endif %}

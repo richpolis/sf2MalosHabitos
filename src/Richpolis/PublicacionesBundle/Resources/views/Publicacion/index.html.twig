@@ -36,7 +36,13 @@
     <thead>
         <tr>
             <th>Orden</th>
+            {% if categoria_actual.stringtipocategoria == "Artistas" %}
+            <th>Artista</th>
+            {% elseif categoria_actual.stringtipocategoria == "Noticias"%}
             <th>Titulo</th>
+            {% else %}
+            <th>Producto</th>
+            {% endif%}
             <th>slug</th>
             <th>Activo</th>
             <th>Creado</th>
@@ -85,8 +91,8 @@
         <div class="span4">    
             <ul class="btn-group">
                 <li>
-                    <a class="btn btn-primary" href="{{ path('publicacion_new' )}}">
-                        Nuevo registro
+                    <a class="btn btn-primary" href="{{ path('publicacion_new')}}">
+                        Nuevo registro - {{categoria_actual}}
                     </a>
                 </li>
              </ul>

@@ -13,7 +13,7 @@ class ContactoType extends AbstractType
         $builder
             ->add('name','text',array('label'=>'Nombre'))
             ->add('email','email')
-            ->add('subject','hidden')
+            ->add('subject','text')
             ->add('telefono','text',array('label'=>'Telefono'))    
             ->add('body','textarea',array('label'=>'Mensaje'))
 

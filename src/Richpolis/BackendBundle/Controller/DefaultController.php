@@ -38,19 +38,35 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/galeria/principal", name="backend_galerias_principal")
+     * @Route("/galeria/noticias", name="backend_galerias_noticias")
      */
-    public function galeriaPrincipalAction()
+    public function galeriaNoticiasAction()
     {
-        return $this->forward('CategoriasGaleriaBundle:Categorias:galeriasPrincipal');
+        return $this->forward('CategoriasGaleriaBundle:Categorias:galeriasNoticias');
     }
     
     /**
-     * @Route("/galeria/proyecto", name="backend_galerias_proyecto")
+     * @Route("/galeria/artistas", name="backend_galerias_artistas")
      */
-    public function galeriaProyectoAction()
+    public function galeriaArtistasAction()
     {
-        return $this->forward('CategoriasGaleriaBundle:Categorias:galeriasProyecto');
+        return $this->forward('CategoriasGaleriaBundle:Categorias:galeriasArtistas');
+    }
+    
+    /**
+     * @Route("/galeria/productos/discos", name="backend_galerias_productos_discos")
+     */
+    public function galeriaProductosDiscosAction()
+    {
+        return $this->forward('CategoriasGaleriaBundle:Categorias:galeriasProductosDiscos');
+    }
+    
+    /**
+     * @Route("/galeria/productos/ropa", name="backend_galerias_productos_ropa")
+     */
+    public function galeriaProductosRopaAction()
+    {
+        return $this->forward('CategoriasGaleriaBundle:Categorias:galeriasProductosRopa');
     }
     
     /**
@@ -62,14 +78,36 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/publicacion/proyecto", name="publicaciones_proyecto")
+     * @Route("/publicacion/noticias", name="publicaciones_noticias")
      */
-    public function publicacionesProyectoAction()
+    public function publicacionesNoticiasAction()
     {
-        return $this->forward('PublicacionesBundle:Publicacion:publicacionesProyecto');
+        return $this->forward('PublicacionesBundle:Publicacion:publicacionesNoticias');
     }
     
+    /**
+     * @Route("/publicacion/artistas", name="publicaciones_artistas")
+     */
+    public function publicacionesArtistasAction()
+    {
+        return $this->forward('PublicacionesBundle:Publicacion:publicacionesArtistas');
+    }
     
+    /**
+     * @Route("/publicacion/productos/discos", name="publicaciones_productos_discos")
+     */
+    public function publicacionesProductosDiscosAction()
+    {
+        return $this->forward('PublicacionesBundle:Publicacion:publicacionesProductosDiscos');
+    }
+    
+    /**
+     * @Route("/publicacion/productos/ropa", name="publicaciones_productos_ropa")
+     */
+    public function publicacionesProductosRopaAction()
+    {
+        return $this->forward('PublicacionesBundle:Publicacion:publicacionesProductosRopa');
+    }
     
     /**
      * @Route("/login", name="backend_login")

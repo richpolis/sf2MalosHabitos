@@ -1,0 +1,12 @@
+<ul>
+    {% for artista in artistas %}
+    <li class="item-artista" data-artista="{{artista.id}}" data-url="{{url('show_artista',{'id':artista.id})}}">
+        <figure>
+            <img src="{{artista.portada}}" alt="imagen">
+            <figcaption>
+                <span>{{artista.categoria}}</span>
+            </figcaption>
+        </figure>
+    </li>
+    {% endfor %}
+</ul>

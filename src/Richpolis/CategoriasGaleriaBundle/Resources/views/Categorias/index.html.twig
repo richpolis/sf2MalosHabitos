@@ -39,7 +39,14 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Categoria</th>     
+            {% if tipos[tipo_categoria] == "Noticias"%}
+            <th>Titulo</th>
+            {% elseif tipos[tipo_categoria] == "Artistas" %}
+            <th>Artista</th>
+            {% else %}
+            <th>Producto</th>
+            {% endif %}
+            <th>Imagen</th>    
             <th>Tipo</th>
             <th>Orden</th>
             <th>Activa?</th>
@@ -53,6 +60,7 @@
             <tr>
                 <td><a href="{{ path('categorias_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.categoria }}</td>
+                <td><img src="{{entity.portada }}" style="max-width:120px;" /></td>
                 <td>{{ entity.stringtipocategoria }}</td>
                 <td>{{ entity.posicion }}</td>
                 <td>{{ entity.isactive | isActive | raw }}</td>
@@ -91,7 +99,7 @@
             <ul class="btn-group">
                 <li>
                     <a class="btn btn-primary" href="{{ path('categorias_new',{'tipo': tipo_categoria }) }}">
-                        Nueva galeria
+                        Nuevo registro
                     </a>
                 </li>
             </ul>

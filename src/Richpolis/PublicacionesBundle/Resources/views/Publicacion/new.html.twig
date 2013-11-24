@@ -12,11 +12,11 @@
 {% endblock %}
 
 {% block menu_horizontal %}
-    {% include 'BackendBundle:Default:menu_horizontal.html.twig' with {'pagina': 'publicacion'} %}
+    {% include 'BackendBundle:Default:menu_horizontal.html.twig' with {'pagina': 'publicaciones'} %}
 {% endblock %}
 
 {% block siderbar %}
-   {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': entity.categoria.slug} %}
+   {% include 'BackendBundle:Default:siderbar.html.twig' with {'pagina': entity.categoria.stringtipocategoria} %}
 {% endblock %}        
     
 {% block body %}

@@ -1,0 +1,10 @@
+<ul class="lista-shop">
+    {% for producto in productos %}
+    <li>
+        <h3>{{producto.categoria}}</h3>
+        <figure  class="item-shop" data-shop="{{producto.id}}">
+            <img src="{{producto.portada}}" alt="{{producto.categoria}}"/>
+        </figure>
+    </li>
+    {% endfor %}
+</ul>

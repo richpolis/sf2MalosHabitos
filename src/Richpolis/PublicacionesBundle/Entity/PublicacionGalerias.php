@@ -17,7 +17,7 @@ class PublicacionGalerias
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Richpolis\PublicacionesBundle\Entity\Publicacion")
      */
-    protected $proyecto;
+    protected $publicacion;
     
     /**
      * @ORM\Id
@@ -27,27 +27,27 @@ class PublicacionGalerias
  
 
     /**
-     * Set proyecto
+     * Set publicacion
      *
      * @param \Richpolis\PublicacionesBundle\Entity\Publicacion $proyecto
      *
      * @return PublicacionGalerias
      */
-    public function setProyecto(\Richpolis\PublicacionesBundle\Entity\Publicacion $proyecto)
+    public function setPublicacion(\Richpolis\PublicacionesBundle\Entity\Publicacion $publicacion)
     {
-        $this->proyecto = $proyecto;
+        $this->publicacion = $publicacion;
 
         return $this;
     }
 
     /**
-     * Get proyecto
+     * Get publicacion
      *
      * @return \Richpolis\PublicacionesBundle\Entity\Publicacion 
      */
-    public function getProyecto()
+    public function getPublicacion()
     {
-        return $this->proyecto;
+        return $this->publicacion;
     }
 
     /**

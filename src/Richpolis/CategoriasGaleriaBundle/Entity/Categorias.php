@@ -34,9 +34,31 @@ class Categorias
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="text", nullable=true)
+     * @ORM\Column(name="descripcion", type="text", nullable=false)
+     * @Assert\NotBlank()
      */
     private $descripcion;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter", type="string", length=140, nullable=true)
+     */
+    private $twitter;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=140, nullable=true)
+     */
+    private $facebook;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="portada", type="string", length=255, nullable=true)
+     */
+    private $portada;
 
     /**
      * @var integer
@@ -92,20 +114,22 @@ class Categorias
      */
     protected $galerias;
     
-    static public $GALERIA_PRINCIPAL=1;
-    static public $GALERIA_PROYECTOS=2;
-
-    
+    static public $GALERIA_NOTICIAS=1;
+    static public $GALERIA_ARTISTAS=2;
+    static public $GALERIA_PRODUCTOS_ROPA=3;
+    static public $GALERIA_PRODUCTOS_DISCOS=4;
     
     static private $sCategorias=array(
-        1=>'Galeria Principal',
-        2=>'Galeria de Proyecto',
+        1=>'Noticias',
+        2=>'Artistas',
+        3=>'Productos: ropa',
+        4=>'Productos: discos',
     );
     
     public function __construct() {
         $this->isActive = true;
         $this->isCategoria = true;
-        $this->tipoCategoria=self::$GALERIA_PRINCIPAL;
+        $this->tipoCategoria=self::$GALERIA_NOTICIAS;
         $this->galerias =new \Doctrine\Common\Collections\ArrayCollection();
     }
     
@@ -118,7 +142,7 @@ class Categorias
     }
 
     static function getPreferedTipoCategoria(){
-        return array(self::$GALERIA_PRINCIPAL);
+        return array(self::$GALERIA_NOTICIAS);
     }
 
     public function __toString()
@@ -415,5 +439,77 @@ class Categorias
     public function setUpdatedAtValue()
     {
         $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     *
+     * @return Categorias
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string 
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Set facebook
+     *
+     * @param string $facebook
+     *
+     * @return Categorias
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    /**
+     * Get facebook
+     *
+     * @return string 
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * Set portada
+     *
+     * @param string $portada
+     *
+     * @return Categorias
+     */
+    public function setPortada($portada)
+    {
+        $this->portada = $portada;
+
+        return $this;
+    }
+
+    /**
+     * Get portada
+     *
+     * @return string 
+     */
+    public function getPortada()
+    {
+        return $this->portada;
     }
 }

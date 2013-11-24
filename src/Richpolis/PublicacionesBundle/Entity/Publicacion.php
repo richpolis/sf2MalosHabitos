@@ -32,51 +32,24 @@ class Publicacion
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion_corta", type="text" )
+     * @ORM\Column(name="descripcion", type="text" )
      */
-    private $descripcionCorta;  
+    private $descripcion;  
+    
     
     /**
      * @var string
      *
-     * @ORM\Column(name="cliente", type="string", length=255)
+     * @ORM\Column(name="twitter", type="string", length=255,nullable=true)
      */
-    private $cliente;
+    private $twitter;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion_cliente", type="text" )
+     * @ORM\Column(name="facebook", type="string", length=255, nullable=true)
      */
-    private $descripcionCliente;    
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fecha", type="date", nullable=true)
-     */
-    private $fecha;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="descripcion_fecha", type="text" )
-     */
-    private $descripcionFecha;    
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="location", type="string", length=255)
-     */
-    private $location;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="descripcion_location", type="text" )
-     */
-    private $descripcionLocation;    
+    private $facebook;    
 
     /**
      * @var integer
@@ -99,17 +72,16 @@ class Publicacion
      */
     private $isActive;
     
-    /**
-     * @var \CategoriasPublicacion
-     *
-     * @ORM\ManyToOne(targetEntity="CategoriasPublicacion", inversedBy="publicaciones" )
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="categoria_id", referencedColumnName="id")
-     * })
-     */
-    private $categoria;
-
     
+    /**
+     * @ManyToMany(targetEntity="Richpolis\")
+     * @JoinTable(name="users_groups",
+     *      joinColumns={@JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@JoinColumn(name="group_id", referencedColumnName="id")}
+     *      )
+     */
+    private $galeria;
+
     /**
      * @var \DateTime
      *
@@ -188,7 +160,53 @@ class Publicacion
     {
         return $this->posicion;
     }
+    
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Publicacion
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+    
+    /**
+     * Set categoria
+     *
+     * @param \Richpolis\PublicacionesBundle\Entity\CategoriasPublicacion $categoria
+     * @return Publicacion
+     */
+    public function setCategoria(\Richpolis\PublicacionesBundle\Entity\CategoriasPublicacion $categoria = null)
+    {
+        $this->categoria = $categoria;
+    
+        return $this;
+    }
+
+    /**
+     * Get categoria
+     *
+     * @return \Richpolis\PublicacionesBundle\Entity\CategoriasPublicacion 
+     */
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+    
     /**
      * Set isActive
      *
@@ -337,216 +355,78 @@ class Publicacion
        return $sale;
 
     }
+   
 
     /**
-     * Set categoria
+     * Set descripcion
      *
-     * @param \Richpolis\PublicacionesBundle\Entity\CategoriasPublicacion $categoria
+     * @param string $descripcion
+     *
      * @return Publicacion
      */
-    public function setCategoria(\Richpolis\PublicacionesBundle\Entity\CategoriasPublicacion $categoria = null)
+    public function setDescripcion($descripcion)
     {
-        $this->categoria = $categoria;
-    
-        return $this;
-    }
-
-    /**
-     * Get categoria
-     *
-     * @return \Richpolis\PublicacionesBundle\Entity\CategoriasPublicacion 
-     */
-    public function getCategoria()
-    {
-        return $this->categoria;
-    }
-
-    
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     * @return Publicacion
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
+        $this->descripcion = $descripcion;
 
         return $this;
     }
 
     /**
-     * Get slug
+     * Get descripcion
      *
      * @return string 
      */
-    public function getSlug()
+    public function getDescripcion()
     {
-        return $this->slug;
+        return $this->descripcion;
     }
 
-    
-
     /**
-     * Set descripcionCorta
+     * Set twitter
      *
-     * @param string $descripcionCorta
+     * @param string $twitter
+     *
      * @return Publicacion
      */
-    public function setDescripcionCorta($descripcionCorta)
+    public function setTwitter($twitter)
     {
-        $this->descripcionCorta = $descripcionCorta;
+        $this->twitter = $twitter;
 
         return $this;
     }
 
     /**
-     * Get descripcionCorta
+     * Get twitter
      *
      * @return string 
      */
-    public function getDescripcionCorta()
+    public function getTwitter()
     {
-        return $this->descripcionCorta;
+        return $this->twitter;
     }
 
     /**
-     * Set cliente
+     * Set facebook
      *
-     * @param string $cliente
+     * @param string $facebook
+     *
      * @return Publicacion
      */
-    public function setCliente($cliente)
+    public function setFacebook($facebook)
     {
-        $this->cliente = $cliente;
+        $this->facebook = $facebook;
 
         return $this;
     }
 
     /**
-     * Get cliente
+     * Get facebook
      *
      * @return string 
      */
-    public function getCliente()
+    public function getFacebook()
     {
-        return $this->cliente;
-    }
-
-    /**
-     * Set descripcionCliente
-     *
-     * @param string $descripcionCliente
-     * @return Publicacion
-     */
-    public function setDescripcionCliente($descripcionCliente)
-    {
-        $this->descripcionCliente = $descripcionCliente;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcionCliente
-     *
-     * @return string 
-     */
-    public function getDescripcionCliente()
-    {
-        return $this->descripcionCliente;
-    }
-
-    /**
-     * Set fecha
-     *
-     * @param \DateTime $fecha
-     * @return Publicacion
-     */
-    public function setFecha($fecha)
-    {
-        $this->fecha = $fecha;
-
-        return $this;
-    }
-
-    /**
-     * Get fecha
-     *
-     * @return \DateTime 
-     */
-    public function getFecha()
-    {
-        return $this->fecha;
-    }
-
-    /**
-     * Set descripcionFecha
-     *
-     * @param string $descripcionFecha
-     * @return Publicacion
-     */
-    public function setDescripcionFecha($descripcionFecha)
-    {
-        $this->descripcionFecha = $descripcionFecha;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcionFecha
-     *
-     * @return string 
-     */
-    public function getDescripcionFecha()
-    {
-        return $this->descripcionFecha;
-    }
-
-    /**
-     * Set location
-     *
-     * @param string $location
-     * @return Publicacion
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string 
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
-    /**
-     * Set descripcionLocation
-     *
-     * @param string $descripcionLocation
-     * @return Publicacion
-     */
-    public function setDescripcionLocation($descripcionLocation)
-    {
-        $this->descripcionLocation = $descripcionLocation;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcionLocation
-     *
-     * @return string 
-     */
-    public function getDescripcionLocation()
-    {
-        return $this->descripcionLocation;
+        return $this->facebook;
     }
 
     
