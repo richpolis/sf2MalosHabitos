@@ -24,6 +24,10 @@ class CategoriasController extends Controller
     protected function getFilters()
     {
         $filters=$this->get('session')->get('filters', array());
+        
+        if(!isset($filters['categorias']))
+            $filters['categorias']=Categorias::$GALERIA_NOTICIAS;
+        
         return $filters;
     }
     
@@ -114,7 +118,7 @@ class CategoriasController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $categoria_actual = $em->getRepository('CategoriasGaleriaBundle:Categorias')
                                ->find($id);
@@ -397,7 +401,7 @@ class CategoriasController extends Controller
      * @Template()
      */
     public function galeriaAction($categoria,$isActive){
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entities=$em->getRepository('CategoriasGaleriaBundle:Galerias')
                 ->getGaleriaPorCategoriaYStatus($categoria,$isActive);
         
@@ -418,7 +422,7 @@ class CategoriasController extends Controller
         if ($request->isXmlHttpRequest()) {
             $categoria = $this->getDoctrine()->getRepository('CategoriasGaleriaBundle:Categorias')->find($request->request->get("categoria"));
             $registro_order = $request->query->get('registro');
-            $em=$this->getDoctrine()->getEntityManager();
+            $em=$this->getDoctrine()->getManager();
             $result['ok']="ok";
             foreach($registro_order as $order=>$id)
             {

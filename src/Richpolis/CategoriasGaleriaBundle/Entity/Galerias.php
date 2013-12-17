@@ -522,6 +522,31 @@ class Galerias
         
         return \Richpolis\BackendBundle\Utils\Richsys::getArchivoView($opciones);
     }
+    
+    public function getArchivoArtistasView(){
+        $opciones=array(
+            'tipo_archivo'  => \Richpolis\BackendBundle\Utils\Richsys::getTipoArchivo($this->getArchivo()),
+            'archivo'   =>  $this->getArchivo(),
+            'carpeta'   =>  'galerias',
+            'width'     =>  365,
+            'height'    =>  300,
+        );
+        
+        return \Richpolis\BackendBundle\Utils\Richsys::getArchivoView($opciones);
+    }
+    
+    public function getArchivoProductosView(){
+        $opciones=array(
+            'tipo_archivo'  => \Richpolis\BackendBundle\Utils\Richsys::getTipoArchivo($this->getArchivo()),
+            'archivo'   =>  $this->getArchivo(),
+            'carpeta'   =>  'galerias',
+            'width'     =>  510,
+            'height'    =>  300,
+        );
+        
+        return \Richpolis\BackendBundle\Utils\Richsys::getArchivoView($opciones);
+    }
+    
     public function getWidth(){
        switch($this->getCategoria()->getTipoCategoria()){
             case Categorias::$GALERIA_NOTICIAS: 

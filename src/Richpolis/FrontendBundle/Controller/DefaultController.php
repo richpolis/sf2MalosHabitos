@@ -65,8 +65,8 @@ class DefaultController extends Controller {
         $pagination = $paginator->paginate(
             $query,
             $this->getRequest()->query->get('pageNoticias', 1),
-            2,
-            array('distinct' => false)
+            3,
+            array('distinct' => true)
         );
 
         $data = $pagination->getPaginationData();
@@ -247,7 +247,7 @@ class DefaultController extends Controller {
                 // reenvíe el formulario si actualiza la página
                 $ok=true;
                 $error=false;
-                $mensaje="El mensaje ha sido enviado";
+                $mensaje="Gracias, mensaje enviado.";
                 $contacto = new Contacto();
                 $form = $this->createForm(new ContactoType(), $contacto);
             }else{
@@ -289,8 +289,8 @@ class DefaultController extends Controller {
                 
                 $message = \Swift_Message::newInstance()
                         ->setSubject($datos->getSubject())
-                        ->setFrom($this->container->getParameter('richpolis.emails.to_email'))
-                        ->setTo($datos->getEmail())
+                        ->setFrom($datos->getEmail())
+                        ->setTo($this->container->getParameter('richpolis.emails.to_email'))
                         ->setBody($this->renderView('BackendBundle:Default:pedidoEmail.html.twig', array('datos' => $datos)), 'text/html');
                 $this->get('mailer')->send($message);
 
@@ -300,7 +300,7 @@ class DefaultController extends Controller {
                 // reenvíe el formulario si actualiza la página
                 $ok=true;
                 $error=false;
-                $mensaje="El mensaje ha sido enviado";
+                $mensaje="Gracias, mensaje enviado.";
                 $pedido = new Pedido();
                 $form = $this->createForm(new PedidoType(), $pedido);
             }else{

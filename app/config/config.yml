@@ -94,17 +94,17 @@ avalanche_imagine:
     filters:
         galerias_noticias:
             type:    thumbnail
-            options: { size: [500, 500], mode: inset, cache_type: public, cache_expires: '2 weeks' }
+            options: { size: [500, 500], mode: outbound, cache_type: public, cache_expires: '2 weeks' }
         galerias_artistas:
             type:    thumbnail
-            options: { size: [389, 203], mode: outbound, cache_type: public, cache_expires: '2 weeks' }
+            options: { size: [365, 300], mode: outbound, cache_type: public, cache_expires: '2 weeks' }
         galerias_productos:
             type:    thumbnail
-            options: { size: [400, 276], mode: outbound, cache_type: public, cache_expires: '2 weeks' }    
+            options: { size: [510, 330], mode: inset, cache_type: public, cache_expires: '2 weeks' }    
 
 parameters:
     # dirección de correo electrónico
-    richpolis.emails.to_email: richpolis@gmail.com
+    richpolis.emails.to_email: phrenesis@gmail.com
     # Blogger máximo de comentarios recientes
     richpolis_registros_limit: 10
     richpolis_imagenes_limit: 50

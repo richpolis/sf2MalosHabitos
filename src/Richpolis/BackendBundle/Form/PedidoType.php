@@ -14,7 +14,7 @@ class PedidoType extends AbstractType
             ->add('name','text',array('label'=>'Nombre'))
             ->add('email','email')
             ->add('subject','hidden')
-            ->add('telefono','text',array('label'=>'Telefono'))    
+            ->add('telefono','text',array('label'=>'Telefono','required'=>false))    
             ->add('producto','hidden')
 
         ;

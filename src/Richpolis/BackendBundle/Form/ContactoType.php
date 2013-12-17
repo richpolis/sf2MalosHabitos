@@ -14,7 +14,7 @@ class ContactoType extends AbstractType
             ->add('name','text',array('label'=>'Nombre'))
             ->add('email','email')
             ->add('subject','text')
-            ->add('telefono','text',array('label'=>'Telefono'))    
+            ->add('telefono','text',array('label'=>'Telefono','required'=>false))    
             ->add('body','textarea',array('label'=>'Mensaje'))
 
         ;

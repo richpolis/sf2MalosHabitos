@@ -17,16 +17,16 @@ class CategoriasRepository extends EntityRepository
         $em=$this->getEntityManager();
         if($tipo==0){
             $query=$em->createQuery('
-                SELECT COUNT(p.posicion) as value 
+                SELECT MAX(p.posicion) as value 
                 FROM CategoriasGaleriaBundle:Categorias p 
-                ORDER BY p.posicion ASC
+                ORDER BY p.posicion DESC
             ');
         }else{
             $query=$em->createQuery('
-                SELECT COUNT(p.posicion) as value 
+                SELECT MAX(p.posicion) as value 
                 FROM CategoriasGaleriaBundle:Categorias p 
                 WHERE p.tipoCategoria=:tipo 
-                ORDER BY p.posicion ASC
+                ORDER BY p.posicion DESC
             ')->setParameter('tipo', $tipo);
         }
         $max=$query->getResult();

@@ -5,14 +5,14 @@ jQuery.browser.opera = /opera/.test(navigator.userAgent.toLowerCase());
 jQuery.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
 
 function showImagenesNoticia(idNoticia){
-    $.get('/app_dev.php/imagenes/noticias/'+idNoticia,{},function(data){
+    $.get('/app.php/imagenes/noticias/'+idNoticia,{},function(data){
        $.prettyPhoto.open(data.imagenes,data.titulos,data.descripciones);
     });
 }
 
 function paginaNoticias(pagina){
     $(".loader-richpolis").show("fast",function(){
-        $.get('/app_dev.php/noticias',{'pageNoticias':pagina},function(data){
+        $.get('/app.php/noticias',{'pageNoticias':pagina},function(data){
             $(".contenido-news").fadeOut("fast",function(){
                 $(".contenido-news").html(data).fadeIn("slow",function(){
                     $(".loader-richpolis").hide("fast");
@@ -25,7 +25,7 @@ function paginaNoticias(pagina){
 
 function paginaArtistas(){
     $(".loader-richpolis").show("fast",function(){
-        $.get('/app_dev.php/artistas',{},function(data){
+        $.get('/app.php/artistas',{},function(data){
             $(".lista-artistas").fadeOut("fast",function(){
                 $(".lista-artistas").html(data).fadeIn("slow",function(){
                     $(".loader-richpolis").hide("fast");
@@ -38,7 +38,7 @@ function paginaArtistas(){
 
 function paginaProductos(tipo,pagina){
     $(".loader-richpolis").show("fast",function(){
-        $.get('/app_dev.php/productos/'+tipo,{},function(data){
+        $.get('/app.php/productos/'+tipo,{},function(data){
             $(".contenido-shop").fadeOut("fast",function(){
                 $(".contenido-shop").html(data).fadeIn("slow",function(){
                     $(".loader-richpolis").hide("fast");
@@ -59,42 +59,28 @@ function mensajeFormulario(){
     });
 }
 
-function enviarPedido() {
-    var datos=$("form.form-pedido-producto").serialize();
-    $(".loader-richpolis").show("fast",function(){
-        $.post("/app_dev.php/pedido", datos,
-            function(data) {
-                $(".formulario-pedido").fadeOut("fast",function(){
-                    $(".formulario-pedido").html(data).fadeIn("slow",function(){
-                        $(".loader-richpolis").hide("fast");
-                    });
-                });
-        });
-    });
-    
-}
 
-function enviarContacto() {
-    var datos = $("form.form-contacto").serialize();
-    $(".loader-richpolis").show("fast",function(){
-        $.post("/app_dev.php/contacto", datos,
-            function(data) {
-                $(".formulario").fadeOut("fast",function(){
-                    $(".formulario").html(data).fadeIn("slow",function(){
-                        $(".loader-richpolis").hide("fast");
+function inicializarContacto() {
+    $('button.form-submit').on('click',function() {
+        var datos = $("form.form-contacto").serialize();
+        $(".loader-richpolis").show("fast",function(){
+            $.post("/contacto", datos,
+                function(data) {
+                    $(".formulario").fadeOut("fast",function(){
+                        $(".formulario").html(data).fadeIn("slow",function(){
+                            $(".loader-richpolis").hide("fast");
+                        });
                     });
-                });
-                
+            });
         });
     });
-    
 }
 
 function iniciarPaginaShop(){
     $(".item-shop").on("click", function(){
        var $item= $(this); 
        $(".loader-richpolis").show("fast",function(){ 
-          $().dialogModalRS("/app_dev.php/producto/"+$item.data("shop"),cargarProducto($item.data("shop")));
+          $().dialogModalRS("/app.php/producto/"+$item.data("shop"),cargarProducto($item.data("shop")));
        });
     });
 }

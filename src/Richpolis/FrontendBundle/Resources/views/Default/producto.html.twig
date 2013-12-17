@@ -8,13 +8,13 @@
         <ul class="galeria-producto">
             {% for galeria in producto.galerias %}
                 <li>
-                    <figure>
+                    <!--figure-->
                         {% if galeria.isImagen == true %}
                         <img src='{{galeria.webPath | apply_filter('galerias_productos') }}' alt="{{galeria.titulo}}"/>
                         {% else %}
-                        {{galeria.archivoView | raw }}
+                        {{galeria.archivoProductosView | raw }}
                         {% endif %}
-                    </figure>
+                    <!--/figure-->
                 </li>
             {% endfor %}
         </ul>
@@ -24,7 +24,7 @@
     <div class="descripcion-producto">
         {{producto.descripcion | raw }}
     </div>
-    <hr/>
+
     <h3>Comprar</h3>
     <p>Gracias por el interes en nuestro producto, envianos tu nombre, email o telefono y te contactaremos para hacer el pedido</p>
     <div class="formulario-pedido">
@@ -40,6 +40,7 @@
             maxSlides: 1,
             slideMargin: 10,
             pager: false,
+            video: true,
             prevSelector: '.ctl-galeria-producto-left',
             nextSelector: '.ctl-galeria-producto-right',
             prevText: '',

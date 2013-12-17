@@ -33,7 +33,7 @@ class GaleriasController extends Controller
         if(isset($filters['categorias'])){
             return $filters['categorias'];
         }else{
-            return Categorias::$GALERIA;
+            return Categorias::$GALERIA_NOTICIAS;
         }
         
     }
@@ -320,7 +320,7 @@ class GaleriasController extends Controller
      * @Template("CategoriasGaleriaBundle:Categorias:galeria.html.twig")
      */
     public function galeriaAction($categoria,$isActive){
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entities=$em->getRepository('CategoriasGaleriaBundle:Galerias')->getGaleriaPorCategoriaYStatus($categoria,$isActive);
         
         return array(
@@ -345,7 +345,7 @@ class GaleriasController extends Controller
             $titulo=$request->query->get('titulo');
             $descripcion =$request->query->get('contenido');
         }
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $registro = $em->getRepository('CategoriasGaleriaBundle:Galerias')->find($id);
         $registro->setTitulo($titulo);
         $registro->setDescripcion($descripcion);
@@ -370,7 +370,7 @@ class GaleriasController extends Controller
      */
     public function deleteRegistroGaleriaAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CategoriasGaleriaBundle:Galerias')->find($id);
         $request = $this->getRequest();
         $result=array();
@@ -400,7 +400,7 @@ class GaleriasController extends Controller
      */
     public function activarAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('CategoriasGaleriaBundle:Galerias')->find($id);
         $request = $this->getRequest();
         $result=array();
@@ -435,7 +435,7 @@ class GaleriasController extends Controller
      */
     public function cambiarTipoCategoriaAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
         $id=$request->query->get('id');
         $tipo=$request->query->get('tipo');
@@ -475,7 +475,7 @@ class GaleriasController extends Controller
      */
     public function cambiarArchivoCategoriaAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $request = $this->getRequest();
         $id=$request->query->get('id');
         $IdCategoria=$request->query->get('categoria');

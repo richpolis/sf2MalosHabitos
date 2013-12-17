@@ -300,6 +300,7 @@
 {% endblock %}
 {% block javascripts %}
   {{parent()}}
+<script src="{{asset('js/plugins/jquery.fitvids.js')}}"></script>
 <script src="{{asset('js/jquery.bxslider.min.js')}}"></script>
 <script src="{{asset('js/jquery.modal2.js')}}"></script>
 <script src="{{asset('js/sfrichpolis.js')}}"></script>
@@ -316,6 +317,10 @@
         setTimeout(function(){
             paginaProductos("discos",1);
         },600);
+        
+        setTimeout(function(){
+            inicializarContacto();
+        },1000);
         
         $.iniciarCircle();
     });

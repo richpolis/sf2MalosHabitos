@@ -24,8 +24,8 @@ class CategoriasArtistasType extends AbstractType
                 'choices'=>Categorias::getArrayTipoCategorias(),
                 'preferred_choices'=>Categorias::getPreferedTipoCategoria()
                 ))
-            ->add('twitter',"text")
-            ->add('facebook',"text")    
+            ->add('twitter',"url",array('attr'=>array('placeholder'=>'Ingresar la direccion http://'),'required'=>false))
+            ->add('facebook',"url",array('attr'=>array('placeholder'=>'Ingresar la direccion http://'),'required'=>false))    
             ->add('posicion',"hidden")
             ->add('portada',"hidden")    
             ->add('isActive',null,array('label'=>'Activo?','required'=>false))

@@ -2,13 +2,13 @@
     <ul class="lista-galeria-artistas">
         {% for galeria in artista.galerias %}
         <li>
-            <figure>
+            <!--figure-->
                 {% if galeria.isImagen == true %}
                     <img src='{{galeria.webPath | apply_filter('galerias_artistas') }}' alt="{{galeria.titulo}}"/>
                 {% else %}
-                    {{galeria.archivoView | raw }}
+                    {{galeria.archivoArtistasView | raw }}
                 {% endif %}
-            </figure>
+            <!--/figure-->
         </li>
         {% endfor %}
     </ul>
@@ -22,7 +22,7 @@
     </h3>
     {{artista.descripcion | raw }}
 </div>
-<div class="redes-sociales-artistias">
+<div class="redes-sociales-artistas">
     {% if artista.twitter | length > 0%}
     <a href="{{artista.twitter}}" class="red-social-twitter" target="_blank"></a>
     {% endif %}
@@ -37,6 +37,7 @@
             maxSlides: 1,
             slideMargin: 10,
             pager: true,
+            video: true,
             prevSelector: '.ctl-galeria-artistas-left',
             nextSelector: '.ctl-galeria-artistas-right',
             prevText: '',

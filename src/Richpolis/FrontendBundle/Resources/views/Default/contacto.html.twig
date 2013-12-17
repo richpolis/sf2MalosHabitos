@@ -5,34 +5,32 @@
 {% endif %}
 
 
-<form onsubmit="return false;" action="{{path('frontend_contacto')}}"  method="post" class="form-contacto">
+<form onsubmit="return false;" action="{{path('frontend_contacto')}}"  method="POST" class="form-contacto" novalidate="novalidate">
     <div class="input-formulario">
-                    {{ form_errors(form.name) }}
-                    {{ form_widget(form.name, {'attr': {'placeholder': 'NOMBRE*'}}) }}
-
+       {{ form_errors(form.name) }}
+       {{ form_widget(form.name, {'attr': {'placeholder': 'NOMBRE*'}}) }}
     </div>
     <div class="input-formulario">
-                    {{ form_errors(form.email) }}
-                    {{ form_widget(form.email, {'attr': {'placeholder': 'EMAIL*'}}) }}
+       {{ form_errors(form.email) }}
+       {{ form_widget(form.email, {'attr': {'placeholder': 'EMAIL*'}}) }}
     </div>
     <div class="input-formulario">
-                    {{ form_errors(form.subject) }}
-                    {{ form_widget(form.subject, {'attr': {'placeholder': 'ASUNTO*'}}) }}
+       {{ form_errors(form.subject) }}
+       {{ form_widget(form.subject, {'attr': {'placeholder': 'ASUNTO*'}}) }}
     </div>
     <div class="input-formulario">
-                    {{ form_errors(form.telefono) }}
-                    {{ form_widget(form.telefono, {'required':false,'attr': {'placeholder': 'TELEFONO'}}) }}
+       {{ form_errors(form.telefono) }}
+       {{ form_widget(form.telefono, {'required':false,'attr': {'placeholder': 'TELEFONO'}}) }}
     </div>
     <div class="input-formulario">
-                    {{ form_errors(form.body) }}
-                    {{ form_widget(form.body, {'attr': {'placeholder': 'MENSAJE*'}}) }}                    
-
+       {{ form_errors(form.body) }}
+       {{ form_widget(form.body, {'attr': {'placeholder': 'MENSAJE*'}}) }}                    
     </div>
     <div class="input-formulario">
-        <button class="form-submit" onclick="javascript:enviarContacto();">Enviar</button>
+        <button class="form-submit">Enviar</button>
     </div>
-                {{form_errors(form)}}
-                {{ form_rest(form) }} 
+   {{form_errors(form)}}
+   {{ form_rest(form) }} 
 </form>
 {% if error %}
 <div class="mensaje-formulario error-formulario">
@@ -46,6 +44,8 @@
 {% endif %}
 <script>
 setTimeout(function(){
-  mensajeFormulario();    
+  inicializarContacto();
+  mensajeFormulario();
 },4000);
-</script>    
+</script>
+

@@ -29,7 +29,7 @@ class ConfiguracionesController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         
         $query = $em->getRepository("BackendBundle:Configuraciones")->getQueryConfiguracionesActivas();
 

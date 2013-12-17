@@ -48,7 +48,7 @@
             {% endif %}
             <th>Imagen</th>    
             <th>Tipo</th>
-            <th>Orden</th>
+            <!--th>Orden</th-->
             <th>Activa?</th>
             <th>Creada</th>
             <th>Actualizacion</th>
@@ -62,7 +62,7 @@
                 <td>{{ entity.categoria }}</td>
                 <td><img src="{{entity.portada }}" style="max-width:120px;" /></td>
                 <td>{{ entity.stringtipocategoria }}</td>
-                <td>{{ entity.posicion }}</td>
+                <!--td>{{ entity.posicion }}</td-->
                 <td>{{ entity.isactive | isActive | raw }}</td>
                 <td>{% if entity.createdat %}{{ entity.createdat|date('d/m/Y H:i') }}{% endif%}</td>
                 <td>{% if entity.updatedat %}{{ entity.updatedat|date('d/m/Y H:i') }}{% endif%}</td>
@@ -79,12 +79,14 @@
                         </a>
                     </li>
                     <li>
-                        <a class="btn btn-mini" href="{{ path('categorias_up', { 'id': entity.id ,'page': page}) }}" title="Subir registro">
+                        <a class="btn btn-mini" href="{{ path('categorias_down', { 'id': entity.id, 'page': page }) }}" title="Subir registro">
+                            
                             <i class="icon-hand-up"></i>
                         </a>
                     </li>
                     <li>
-                        <a class="btn btn-mini" href="{{ path('categorias_down', { 'id': entity.id, 'page': page }) }}" title="Bajar registro">
+                        
+                        <a class="btn btn-mini" href="{{ path('categorias_up', { 'id': entity.id ,'page': page}) }}" title="Bajar registro">
                             <i class="icon-hand-down"></i>
                         </a>
                     </li>

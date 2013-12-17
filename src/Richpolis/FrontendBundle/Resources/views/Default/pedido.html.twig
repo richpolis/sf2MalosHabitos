@@ -1,10 +1,10 @@
 {% if error is not defined %}
-    {% set error = 0 %}
-    {% set ok = 0 %}
+    {% set error = false %}
+    {% set ok = false %}
     {% set mensaje = "" %}
 {% endif %}
 
-<form onsubmit="return false;" action="{{path('frontend_pedido')}}"  method="post" class="form-pedido-producto">
+<form onsubmit="return false;" action=""  method="POST" class="form-pedido-producto"  novalidate="novalidate">
     <div class="input-form-producto">
                 {{ form_errors(form.name) }}
                 {{ form_widget(form.name, {'attr': {'placeholder': 'Nombre*'}}) }}
@@ -18,24 +18,45 @@
                 {{ form_widget(form.telefono, {'attr': {'placeholder': 'Telefono'}}) }}
     </div>
     <div class="input-form-producto">
-        <button id="enviar-form-producto" onclick="javascript:enviarPedido();">Enviar</button>
+        <img id="preloader-pedido" src="{{asset('images/preloader.gif')}}" style="display: none; opacity: .2;"/>
+        <button id="enviar-form-producto">Enviar</button>
     </div>
             {{form_errors(form)}}
             {{ form_rest(form) }} 
 </form>
         {% if error %}
-<div class="mensaje-formulario error-formulario">
+<div class="mensaje-formulario error-formulario error-formulario-pedido">
             {{mensaje}}
 </div>
         {% endif %}
         {% if ok %}
-<div class="mensaje-formulario ok-formulario">
+<div class="mensaje-formulario ok-formulario ok-formulario-pedido">
             {{mensaje}}
 </div>
         {% endif %}
 <script>
 setTimeout(function(){
-    mensajeFormulario();
+    {% if ok == true %}
+       closeDialogModalRS();
+    {% endif %}
+    {% if error == true %}    
+        mensajeFormulario();
+    {% endif %}
 },4000);
-    
-</script>    
+$(document).ready(function(){
+   $("#enviar-form-producto").on('click',function(){
+        var datos=$("form.form-pedido-producto").serialize();
+        $("#preloader-pedido").show();
+        $(".loader-richpolis").show("fast",function(){
+            $.post("{{path('frontend_pedido')}}", datos,
+                function(data) {
+                    $(".formulario-pedido").fadeOut("fast",function(){
+                        $(".formulario-pedido").html(data).fadeIn("slow",function(){
+                            $(".loader-richpolis").hide("fast");
+                        });
+                    });
+            });
+        }); 
+   }); 
+});    
+</script>

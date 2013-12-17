@@ -372,26 +372,34 @@ ul.lista-shop li figure img {
   vertical-align: top;
 }
 .contenido-ajax .galeria-artistas {
-  width: 40%;
+  /*width: 40%;*/
   margin-top: 10px;
   position: relative;
+  height: 300px;
+  width: 350px;
+  
 }
 .contenido-ajax .galeria-artistas img {
-  width: 100%;
+  /*width: 100%;*/
 }
 .contenido-ajax .galeria-artistas ul {
-  width: 100%;
+  /*width: 100%;*/
   padding: 0;
   margin: 0;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 .contenido-ajax .galeria-artistas li {
   list-style: none;
+  height: 300px;
+  width: 350px;
 }
 .contenido-ajax .galeria-artistas .ctl-galeria-artistas-left {
   position: absolute;
   left: 0px;
   top: 50%;
-  margin-top: -50px;
+  margin-top: -25px;
 }
 .contenido-ajax .galeria-artistas .ctl-galeria-artistas-left a {
   display: block;
@@ -404,7 +412,7 @@ ul.lista-shop li figure img {
   position: absolute;
   right: 0px;
   top: 50%;
-  margin-top: -50px;
+  margin-top: -25px;
 }
 .contenido-ajax .galeria-artistas .ctl-galeria-artistas-right a {
   display: block;
@@ -416,6 +424,7 @@ ul.lista-shop li figure img {
 .contenido-ajax .contenido-artistas {
   width: 56%;
   margin-left: 3%;
+  height: 300px;
 }
 .contenido-ajax .contenido-artistas h3 {
   text-transform: uppercase;
@@ -427,9 +436,10 @@ ul.lista-shop li figure img {
 .contenido-ajax .contenido-artistas p {
   font-style: italic;
 }
-.contenido-ajax .redes-sociales-artistias {
+.contenido-ajax .redes-sociales-artistas {
   width: 100%;
   height: 50px;
+  margin-top: 50px;
 }
 .lista-artistas {
   margin: 0px auto;
@@ -481,7 +491,7 @@ ul.lista-shop li figure img {
   color: #fff;
 }
 .knp_last_tweets {
-  margin: 120px auto 100px auto;
+  margin: 120px auto 0px auto;
   text-align: center;
   width: 80%;
   height: 300px;
@@ -629,7 +639,7 @@ ul.lista-shop li figure img {
   cursor: pointer;
 }
 .contenido-producto {
-  width: 400px;
+  width: 510px;
   margin: 0 auto;
 }
 .contenido-producto h3 {
@@ -646,6 +656,12 @@ ul.lista-shop li figure img {
   margin: 0;
   padding: 0;
 }
+
+.contenido-producto ul.galeria-producto li img{
+    margin: 0 auto;
+    display: block;
+}
+
 .contenido-producto .ctl-galeria-producto-left {
   position: absolute;
   left: -50px;
@@ -690,7 +706,7 @@ ul.lista-shop li figure img {
 
 .contenido-producto .input-form-producto ul{
   position: absolute;
-  right: -20px;
+  left: 230px;
   padding: 0;
   list-style: none;
   color: yellow;
@@ -714,7 +730,7 @@ ul.lista-shop li figure img {
 .contenido-producto button {
   background: none;
   border: none;
-  margin-right: 200px;
+  margin-right: 300px;
   float: right;
   text-transform: uppercase;
   color: white;
@@ -729,9 +745,18 @@ ul.lista-shop li figure img {
     color: red;
 }
 
+.error-formulario-pedido{
+    color: yellow;
+}
+
 .ok-formulario{
     color: green;
 }
+
+.ok-formulario-pedido{
+    color: aquamarine;
+}
+
 
 #twitter-feed{
     position: relative;
@@ -748,4 +773,9 @@ ul.lista-shop li figure img {
     -o-transform: rotate(-4deg);
     transform: rotate(-4deg);
     z-index: 2000;
+}
+
+.descripcion-producto{
+    padding-bottom: 10px;
+    border-bottom: 1px white dashed;
 }

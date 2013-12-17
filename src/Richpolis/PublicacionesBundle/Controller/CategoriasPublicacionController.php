@@ -33,7 +33,7 @@ class CategoriasPublicacionController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $filters = $this->getFilters();
 
@@ -110,7 +110,7 @@ class CategoriasPublicacionController extends Controller
      */
     public function showAction($id)
     {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
 
         $categoria_actual = $em->getRepository('PublicacionesBundle:CategoriasPublicacion')
                                ->find($id);
@@ -348,7 +348,7 @@ class CategoriasPublicacionController extends Controller
      * @Template()
      */
     public function galeriaAction($categoria,$isActive){
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $entities=$em->getRepository('PublicacionesBundle:Publicacion')
                 ->getGaleriaPorCategoriaYStatus($categoria,$isActive);
         
@@ -369,7 +369,7 @@ class CategoriasPublicacionController extends Controller
         if ($request->isXmlHttpRequest()) {
             $categoria = $this->getDoctrine()->getRepository('PublicacionesBundle:CategoriasPublicacion')->find($request->request->get("categoria"));
             $registro_order = $request->query->get('registro');
-            $em=$this->getDoctrine()->getEntityManager();
+            $em=$this->getDoctrine()->getManager();
             $result['ok']="ok";
             foreach($registro_order as $order=>$id)
             {
